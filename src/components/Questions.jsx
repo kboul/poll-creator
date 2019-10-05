@@ -12,6 +12,7 @@ class Questions extends Component {
     render() {
         const { questions } = this.props;
         console.log(questions);
+
         return <div>Questions component</div>;
     }
 }
@@ -29,13 +30,13 @@ Questions.propTypes = {
         PropTypes.shape({
             answers: PropTypes.arrayOf(
                 PropTypes.shape({
-                    order: PropTypes.number.isRequired,
-                    body: PropTypes.string.isRequired
+                    order: PropTypes.number,
+                    body: PropTypes.string
                 })
             ),
-            id: PropTypes.string.isRequired,
-            order: PropTypes.number.isRequired,
-            prompt: PropTypes.string.isRequired
+            id: PropTypes.string,
+            order: PropTypes.number,
+            prompt: PropTypes.string
         })
     ).isRequired,
     getQuestions: PropTypes.func.isRequired
