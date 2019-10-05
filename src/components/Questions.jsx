@@ -13,7 +13,7 @@ class Questions extends Component {
         const { questions } = this.props;
         console.log(questions);
 
-        return <div className="col-md-6 offset-md-6">Questions component</div>;
+        return <div>Questions component</div>;
     }
 }
 
