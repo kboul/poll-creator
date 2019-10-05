@@ -7,7 +7,7 @@ export const getQuestions = () => {
             const response = await httpService.get('/api/questions');
             dispatch({
                 type: types.GET_QUESTIONS,
-                questions: response.data
+                questions: response.data.data
             });
         } catch (error) {
             console.error(
