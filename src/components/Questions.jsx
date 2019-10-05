@@ -13,7 +13,16 @@ class Questions extends Component {
         const { questions } = this.props;
         console.log(questions);
 
-        return <div>Questions component</div>;
+        return (
+            <>
+                <div>Questions component</div>
+                <div className="offset-md-5">
+                    <button type="button" className="btn btn-primary">
+                        Add new question
+                    </button>
+                </div>
+            </>
+        );
     }
 }
 
