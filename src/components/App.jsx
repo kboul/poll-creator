@@ -1,7 +1,8 @@
 import React from 'react';
+import Questions from './Questions';
 
 const App = () => {
-    return <div>Hello World</div>;
+    return <Questions />;
 };
 
 export default App;
