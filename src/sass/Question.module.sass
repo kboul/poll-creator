@@ -5,3 +5,22 @@
 .fa
     font-size: 1.2em
     cursor: pointer
+
+=faUpMargin($marginLeft, $marginRight)
+    margin-left: $marginLeft !important
+    margin-right: $marginRight !important
+
+.faUp
+   +faUpMargin(1.5rem, 1.5rem)
+
+@media only screen and (max-width: 1600px) 
+    .faUp
+       +faUpMargin(1.2rem, 1.2rem)
+
+@media only screen and (max-width: 1400px) 
+    .faUp
+        +faUpMargin(1rem, 1rem)
+
+@media only screen and (max-width: 1400px) 
+    .faUp
+       +faUpMargin(0.7rem, 0.7rem)

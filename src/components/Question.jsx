@@ -7,7 +7,7 @@ const QuestionTemplate = ({ prompt, order }) => {
         <div className="card my-4">
             <div className="card-body">
                 <div className="row no-gutters">
-                    <div className="col-md-11">
+                    <div className="col-xl-11 col-lg-10 col-md-9 col-sm-10">
                         <div className="input-group">
                             <div className="input-group-prepend">
                                 <span
@@ -23,8 +23,10 @@ const QuestionTemplate = ({ prompt, order }) => {
                             />
                         </div>
                     </div>
-                    <div className="col-md-1 my-auto">
-                        <i className={`fa fa-angle-up mx-4 ${styles.fa}`} />
+                    <div className="col-xl-1 col-lg-20 col-md-3 col-sm-2 my-auto">
+                        <i
+                            className={`fa fa-angle-up ${styles.faUp} ${styles.fa}`}
+                        />
                         <i className={`fa fa-angle-down ${styles.fa}`} />
                         <i className={`fa fa-trash float-right ${styles.fa}`} />
                     </div>
