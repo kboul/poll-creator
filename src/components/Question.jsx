@@ -14,7 +14,7 @@ const Question = ({ prompt, id, order, answers, updateQuestion }) => {
         <div className="card my-4" key={id}>
             <div className="card-body">
                 <div className="row no-gutters">
-                    <div className="col-xl-11 col-lg-10 col-md-9 col-sm-10">
+                    <div className="col-xl-10 col-lg-10 col-md-9 col-sm-10">
                         <div className="input-group">
                             <div className="input-group-prepend">
                                 <span
@@ -46,7 +46,7 @@ const Question = ({ prompt, id, order, answers, updateQuestion }) => {
                             )}
                         </div>
                     </div>
-                    <div className="col-xl-1 col-lg-20 col-md-3 col-sm-2 my-auto">
+                    <div className="col-xl-2 col-lg-20 col-md-3 col-sm-2 my-auto">
                         <Icons />
                     </div>
                 </div>
