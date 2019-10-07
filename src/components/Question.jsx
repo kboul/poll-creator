@@ -25,8 +25,10 @@ const Question = ({ prompt, id, order, answers, updateQuestion }) => {
                                 type="text"
                                 className="form-control"
                                 value={value}
-                                onChange={e => setValue(e.target.value)}
-                                onFocus={() => setToggleSave(true)}
+                                onChange={e => {
+                                    setValue(e.target.value);
+                                    setToggleSave(true);
+                                }}
                             />
                             {toggleSave && (
                                 <div className="input-group-append">
