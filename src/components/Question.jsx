@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Answer from './Answer';
+import Icons from './Icons';
 import { updateQuestion } from '../store/actions/updateQuestion';
 import styles from '../sass/Question.module.sass';
 
@@ -46,11 +47,7 @@ const Question = ({ prompt, id, order, answers, updateQuestion }) => {
                         </div>
                     </div>
                     <div className="col-xl-1 col-lg-20 col-md-3 col-sm-2 my-auto">
-                        <i
-                            className={`fa fa-angle-up ${styles.faUp} ${styles.fa}`}
-                        />
-                        <i className={`fa fa-angle-down ${styles.fa}`} />
-                        <i className={`fa fa-trash float-right ${styles.fa}`} />
+                        <Icons />
                     </div>
                 </div>
 
