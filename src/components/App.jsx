@@ -6,7 +6,7 @@ import AddNewQuestionBtn from './AddNewQuestionBtn';
 const App = () => {
     return (
         <div className="container-fluid">
-            <div className="col-md-6 offset-md-3">
+            <div className="col-md-8 offset-md-2">
                 <QuestionTemplate />
                 <AddNewQuestionBtn />
                 <Questions />
