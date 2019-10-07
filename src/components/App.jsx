@@ -1,13 +1,11 @@
 import React from 'react';
 import Questions from './Questions';
-import QuestionTemplate from './QuestionTemplate';
 import AddNewQuestionBtn from './AddNewQuestionBtn';
 
 const App = () => {
     return (
-        <div className="container-fluid">
+        <div className="container-fluid mt-4">
             <div className="col-md-8 offset-md-2">
-                <QuestionTemplate />
                 <AddNewQuestionBtn />
                 <Questions />
             </div>
