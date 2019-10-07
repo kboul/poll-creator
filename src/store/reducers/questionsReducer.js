@@ -8,7 +8,7 @@ const initialState = {
 
 const questionsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case types.GET_QUESTIONS:
+        case types.GET_QUESTIONS_SUCCESS:
             const questions = [...action.questions];
             return {
                 ...state,
