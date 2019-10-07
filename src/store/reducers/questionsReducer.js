@@ -8,7 +8,7 @@ const initialState = {
 
 const questionsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case types.GET_QUESTIONS_SUCCESS:
+        case types.GET_QUESTIONS_SUCCESS: {
             const questions = [...action.questions];
             return {
                 ...state,
@@ -16,6 +16,7 @@ const questionsReducer = (state = initialState, action) => {
                 loading: false,
                 error: false
             };
+        }
         case types.GET_QUESTIONS_LOADING:
             return {
                 ...state,
@@ -28,6 +29,16 @@ const questionsReducer = (state = initialState, action) => {
                 loading: false,
                 error: true
             };
+        case types.UPDATE_QUESTION: {
+            const questions = [...state.questions];
+            const question = questions.find(q => q.id === action.id);
+            question.prompt = action.prompt;
+            return {
+                ...state,
+                questions
+            };
+        }
+
         default:
             return state;
     }
