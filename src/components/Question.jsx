@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Answer from './Answer';
+import { updateQuestion } from '../store/actions/updateQuestion';
 import styles from '../sass/Question.module.sass';
 
-const Question = ({ prompt, order, answers }) => {
+const Question = ({ prompt, id, order, answers, updateQuestion }) => {
+    const [value, setValue] = useState(prompt);
+    const [toggleSave, setToggleSave] = useState(false);
+
     return (
-        <div className="card my-4">
+        <div className="card my-4" key={id}>
             <div className="card-body">
                 <div className="row no-gutters">
                     <div className="col-xl-11 col-lg-10 col-md-9 col-sm-10">
@@ -19,9 +24,23 @@ const Question = ({ prompt, order, answers }) => {
                             <input
                                 type="text"
                                 className="form-control"
-                                value={prompt}
-                                onChange={e => console.log(e)}
+                                value={value}
+                                onChange={e => setValue(e.target.value)}
+                                onFocus={() => setToggleSave(true)}
                             />
+                            {toggleSave && (
+                                <div className="input-group-append">
+                                    <button
+                                        className="btn btn-outline-secondary"
+                                        type="button"
+                                        onClick={() => {
+                                            updateQuestion(value, id);
+                                            setToggleSave(false);
+                                        }}>
+                                        Save
+                                    </button>
+                                </div>
+                            )}
                         </div>
                     </div>
                     <div className="col-xl-1 col-lg-20 col-md-3 col-sm-2 my-auto">
@@ -47,14 +66,23 @@ const Question = ({ prompt, order, answers }) => {
 };
 
 Question.propTypes = {
-    prompt: PropTypes.string.isRequired,
-    order: PropTypes.number.isRequired,
     answers: PropTypes.arrayOf(
         PropTypes.shape({
             order: PropTypes.number,
             body: PropTypes.string
         })
-    ).isRequired
+    ).isRequired,
+    id: PropTypes.string.isRequired,
+    order: PropTypes.number.isRequired,
+    prompt: PropTypes.string.isRequired,
+    updateQuestion: PropTypes.func.isRequired
 };
 
-export default Question;
+const mapDispatchToProps = {
+    updateQuestion
+};
+
+export default connect(
+    null,
+    mapDispatchToProps
+)(Question);
