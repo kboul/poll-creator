@@ -1,5 +1,10 @@
 import { types } from './types';
 
+/**
+ *
+ * @param {string} id
+ */
+
 export const deleteQuestion = id => {
     return async dispatch => {
         try {
