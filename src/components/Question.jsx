@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Answer from './Answer';
 import styles from '../sass/Question.module.sass';
 
-const QuestionTemplate = ({ prompt, order }) => {
+const Question = ({ prompt, order, answers }) => {
     return (
         <div className="card my-4">
             <div className="card-body">
@@ -33,14 +34,27 @@ const QuestionTemplate = ({ prompt, order }) => {
                 </div>
 
                 <hr />
+
+                {answers.map(({ order, body }) => (
+                    <div key={order}>
+                        <Answer body={body} order={order} />
+                        <hr />
+                    </div>
+                ))}
             </div>
         </div>
     );
 };
 
-QuestionTemplate.propTypes = {
+Question.propTypes = {
     prompt: PropTypes.string.isRequired,
-    order: PropTypes.number.isRequired
+    order: PropTypes.number.isRequired,
+    answers: PropTypes.arrayOf(
+        PropTypes.shape({
+            order: PropTypes.number,
+            body: PropTypes.string
+        })
+    ).isRequired
 };
 
-export default QuestionTemplate;
+export default Question;
