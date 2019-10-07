@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Question from './Question';
 import Spinner from './Spinner';
-import { getQuestions } from '../store/actions';
+import { getQuestions } from '../store/actions/getQuestions';
 
 class Questions extends Component {
     componentDidMount() {
