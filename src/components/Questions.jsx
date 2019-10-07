@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Question from './Question';
 import Spinner from './Spinner';
 import { getQuestions } from '../store/actions';
 
@@ -28,7 +29,14 @@ class Questions extends Component {
                 No questions have been created yet.
             </div>
         ) : (
-            <div>Questions component</div>
+            questions.map(({ prompt, id, order, answers }) => (
+                <Question
+                    key={id}
+                    prompt={prompt}
+                    order={order}
+                    answers={answers}
+                />
+            ))
         );
 
         return loading ? <Spinner /> : questionnaire;
