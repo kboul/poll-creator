@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Answer from './Answer';
 import Icons from './Icons';
+import SaveButton from './SaveButton';
 import { updateQuestion } from '../store/actions/updateQuestion';
 import { deleteQuestion } from '../store/actions/deleteQuestion';
 import styles from '../sass/Question.module.sass';
@@ -40,17 +41,12 @@ const Question = ({
                                 }}
                             />
                             {toggleSave && (
-                                <div className="input-group-append">
-                                    <button
-                                        className="btn btn-outline-secondary"
-                                        type="button"
-                                        onClick={() => {
-                                            updateQuestion(value, id);
-                                            setToggleSave(false);
-                                        }}>
-                                        Save
-                                    </button>
-                                </div>
+                                <SaveButton
+                                    onClick={() => {
+                                        updateQuestion(value, id);
+                                        setToggleSave(false);
+                                    }}
+                                />
                             )}
                         </div>
                     </div>
