@@ -48,6 +48,18 @@ const questionsReducer = (state = initialState, action) => {
                 questions
             };
         }
+        case types.UPDATE_ANSWER: {
+            const questions = [...state.questions];
+            const question = questions.find(q => q.id === action.id);
+            const answer = question.answers.filter(
+                a => a.order === action.order
+            );
+            answer[0].body = action.body;
+            return {
+                ...state,
+                questions
+            };
+        }
         case types.DELETE_ANSWER: {
             const questions = [...state.questions];
             const question = questions.find(q => q.id === action.id);
@@ -61,7 +73,6 @@ const questionsReducer = (state = initialState, action) => {
                 questions
             };
         }
-
         default:
             return state;
     }
