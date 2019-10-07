@@ -1,7 +1,9 @@
 import { types } from '../actions/types';
 
 const initialState = {
-    questions: []
+    questions: [],
+    loading: false,
+    error: false
 };
 
 const questionsReducer = (state = initialState, action) => {
@@ -10,7 +12,21 @@ const questionsReducer = (state = initialState, action) => {
             const questions = [...action.questions];
             return {
                 ...state,
-                questions
+                questions,
+                loading: false,
+                error: false
+            };
+        case types.GET_QUESTIONS_LOADING:
+            return {
+                ...state,
+                loading: true,
+                error: false
+            };
+        case types.GET_QUESTIONS_FAIL:
+            return {
+                ...state,
+                loading: false,
+                error: true
             };
         default:
             return state;
