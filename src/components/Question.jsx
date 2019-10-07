@@ -63,7 +63,7 @@ const Question = ({
 
                 {answers.map(({ order, body }) => (
                     <div key={order}>
-                        <Answer body={body} order={order} />
+                        <Answer id={id} body={body} order={order} />
                         <hr />
                     </div>
                 ))}
