@@ -32,6 +32,7 @@ class Questions extends Component {
             questions.map(({ prompt, id, order, answers }) => (
                 <Question
                     key={id}
+                    id={id}
                     prompt={prompt}
                     order={order}
                     answers={answers}
