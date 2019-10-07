@@ -13,6 +13,7 @@ export const deleteQuestion = id => {
             const question = questions.find(q => q.id === id);
             const index = questions.indexOf(question);
             questions.splice(index, 1);
+
             await httpService.post(`/api/questionnaire`, questions);
             dispatch({
                 type: types.DELETE_QUESTION,
