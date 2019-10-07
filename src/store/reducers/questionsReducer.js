@@ -48,6 +48,20 @@ const questionsReducer = (state = initialState, action) => {
                 questions
             };
         }
+        case types.DELETE_ANSWER: {
+            const questions = [...state.questions];
+            const question = questions.find(q => q.id === action.id);
+            // exlude current answer
+            const remainingAnswers = question.answers.filter(
+                a => a.order !== action.order
+            );
+            question.answers = [...remainingAnswers];
+            return {
+                ...state,
+                questions
+            };
+        }
+
         default:
             return state;
     }
