@@ -38,7 +38,16 @@ const questionsReducer = (state = initialState, action) => {
                 questions
             };
         }
-
+        case types.DELETE_QUESTION: {
+            const questions = [...state.questions];
+            const question = questions.find(q => q.id === action.id);
+            const index = questions.indexOf(question);
+            questions.splice(index, 1);
+            return {
+                ...state,
+                questions
+            };
+        }
         default:
             return state;
     }
