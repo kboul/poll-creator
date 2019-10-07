@@ -23,6 +23,7 @@
         "no-shadow": "off",
         "import/no-named-as-default": "off",
         "react/jsx-indent": "off",
-        "react/jsx-indent-props": "off"
+        "react/jsx-indent-props": "off",
+        "react/jsx-closing-bracket-location": "off"
     }
 }
