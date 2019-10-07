@@ -4,9 +4,17 @@ import { connect } from 'react-redux';
 import Answer from './Answer';
 import Icons from './Icons';
 import { updateQuestion } from '../store/actions/updateQuestion';
+import { deleteQuestion } from '../store/actions/deleteQuestion';
 import styles from '../sass/Question.module.sass';
 
-const Question = ({ prompt, id, order, answers, updateQuestion }) => {
+const Question = ({
+    prompt,
+    id,
+    order,
+    answers,
+    updateQuestion,
+    deleteQuestion
+}) => {
     const [value, setValue] = useState(prompt);
     const [toggleSave, setToggleSave] = useState(false);
 
@@ -47,7 +55,7 @@ const Question = ({ prompt, id, order, answers, updateQuestion }) => {
                         </div>
                     </div>
                     <div className="col-xl-2 col-lg-20 col-md-3 col-sm-2 my-auto">
-                        <Icons />
+                        <Icons onTrashClick={() => deleteQuestion(id)} />
                     </div>
                 </div>
 
@@ -74,11 +82,13 @@ Question.propTypes = {
     id: PropTypes.string.isRequired,
     order: PropTypes.number.isRequired,
     prompt: PropTypes.string.isRequired,
-    updateQuestion: PropTypes.func.isRequired
+    updateQuestion: PropTypes.func.isRequired,
+    deleteQuestion: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = {
-    updateQuestion
+    updateQuestion,
+    deleteQuestion
 };
 
 export default connect(
