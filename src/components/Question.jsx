@@ -5,6 +5,7 @@ import Answer from './Answer';
 import Icons from './Icons';
 import SaveButton from './SaveButton';
 import { updateQuestion } from '../store/actions/updateQuestion';
+import { reorderQuestionDown } from '../store/actions/reorderQuestionDown';
 import { deleteQuestion } from '../store/actions/deleteQuestion';
 import styles from '../sass/Question.module.sass';
 
@@ -14,6 +15,7 @@ const Question = ({
     order,
     answers,
     updateQuestion,
+    reorderQuestionDown,
     deleteQuestion
 }) => {
     const [value, setValue] = useState(prompt);
@@ -51,7 +53,10 @@ const Question = ({
                         </div>
                     </div>
                     <div className="col-xl-2 col-lg-20 col-md-3 col-sm-2 my-auto">
-                        <Icons onTrashClick={() => deleteQuestion(id)} />
+                        <Icons
+                            onAngleDownClick={() => reorderQuestionDown(id)}
+                            onTrashClick={() => deleteQuestion(id)}
+                        />
                     </div>
                 </div>
 
@@ -79,11 +84,13 @@ Question.propTypes = {
     order: PropTypes.number.isRequired,
     prompt: PropTypes.string.isRequired,
     updateQuestion: PropTypes.func.isRequired,
+    reorderQuestionDown: PropTypes.func.isRequired,
     deleteQuestion: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = {
     updateQuestion,
+    reorderQuestionDown,
     deleteQuestion
 };
 

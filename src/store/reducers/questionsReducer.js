@@ -81,10 +81,10 @@ const questionsReducer = (state = initialState, action) => {
             const questions = [...state.questions];
             const question = questions.find(q => q.id === action.id);
             // exlude current answer
-            const remainingAnswers = question.answers.filter(
-                a => a.order !== action.order
-            );
-            question.answers = [...remainingAnswers];
+            // const remainingAnswers = question.answers.filter(
+            //     a => a.order !== action.order
+            // );
+            question.answers = [...action.orderRemainingAnswers];
             return {
                 ...state,
                 questions,
@@ -101,6 +101,27 @@ const questionsReducer = (state = initialState, action) => {
                 ...state,
                 deleteAnswerError: false
             };
+        case types.REORDER_QUESTION_DOWN: {
+            const questions = [...state.questions];
+            // find question to be changed
+            const question = questions.find(q => q.id === action.id);
+            // store initial order of item to change
+            const initialOrder = question.order;
+            // find next quetion of the question to be changed
+            const nextQuestion = questions.find(
+                q => q.order === initialOrder + 1
+            );
+            // change the order of the next question
+            nextQuestion.order -= 1;
+            // change the order of the selected question
+            question.order += 1;
+            // sort the array after the changes
+            questions.sort((a, b) => a.order - b.order);
+            return {
+                ...state,
+                questions
+            };
+        }
         default:
             return state;
     }
