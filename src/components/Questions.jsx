@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Alert from './Alert';
 import Question from './Question';
 import Spinner from './Spinner';
 import { getQuestions } from '../store/actions/getQuestions';
@@ -23,29 +24,15 @@ class Questions extends Component {
         } = this.props;
         console.log(questions);
 
-        if (error && !questions.length)
-            return (
-                <div className="alert alert-danger mt-2">
-                    There was an error while fetching the questions.
-                </div>
-            );
+        if (error && !questions.length) return <Alert type="fetchQuestions" />;
 
         const questionnaire = !questions.length ? (
-            <div className="alert alert-warning mt-2">
-                No questions have been created yet.
-            </div>
+            <Alert type="noQuestions" />
         ) : (
             <>
-                {deleteQuestionError && (
-                    <div className="alert alert-danger mt-2">
-                        There was an error while deleting the question.
-                    </div>
-                )}
-                {deleteAnswerError && (
-                    <div className="alert alert-danger mt-2">
-                        There was an error while deleting the answer.
-                    </div>
-                )}
+                {deleteQuestionError && <Alert type="deleteQuestion" />}
+                {deleteAnswerError && <Alert type="deleteAnswer" />}
+
                 {questions.map(({ prompt, id, order, answers }) => (
                     <Question
                         key={id}
