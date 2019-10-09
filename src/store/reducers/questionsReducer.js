@@ -101,6 +101,27 @@ const questionsReducer = (state = initialState, action) => {
                 ...state,
                 deleteAnswerError: false
             };
+        case types.REORDER_QUESTION_UP: {
+            const questions = [...state.questions];
+            // find question to be changed
+            const question = questions.find(q => q.id === action.id);
+            // store initial order of item to change
+            const initialOrder = question.order;
+            // find previous quetion of the question to be changed
+            const nextQuestion = questions.find(
+                q => q.order === initialOrder - 1
+            );
+            // change the order of the previous question
+            nextQuestion.order += 1;
+            // change the order of the selected question
+            question.order -= 1;
+            // sort the array after the changes
+            questions.sort((a, b) => a.order - b.order);
+            return {
+                ...state,
+                questions
+            };
+        }
         case types.REORDER_QUESTION_DOWN: {
             const questions = [...state.questions];
             // find question to be changed

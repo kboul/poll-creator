@@ -5,6 +5,7 @@ import Answer from './Answer';
 import Icons from './Icons';
 import SaveButton from './SaveButton';
 import { updateQuestion } from '../store/actions/updateQuestion';
+import { reorderQuestionUp } from '../store/actions/reorderQuestionUp';
 import { reorderQuestionDown } from '../store/actions/reorderQuestionDown';
 import { deleteQuestion } from '../store/actions/deleteQuestion';
 import styles from '../sass/Question.module.sass';
@@ -15,6 +16,7 @@ const Question = ({
     order,
     answers,
     updateQuestion,
+    reorderQuestionUp,
     reorderQuestionDown,
     deleteQuestion
 }) => {
@@ -54,6 +56,7 @@ const Question = ({
                     </div>
                     <div className="col-xl-2 col-lg-20 col-md-3 col-sm-2 my-auto">
                         <Icons
+                            onAngleUpClick={() => reorderQuestionUp(id)}
                             onAngleDownClick={() => reorderQuestionDown(id)}
                             onTrashClick={() => deleteQuestion(id)}
                         />
@@ -84,12 +87,14 @@ Question.propTypes = {
     order: PropTypes.number.isRequired,
     prompt: PropTypes.string.isRequired,
     updateQuestion: PropTypes.func.isRequired,
+    reorderQuestionUp: PropTypes.func.isRequired,
     reorderQuestionDown: PropTypes.func.isRequired,
     deleteQuestion: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = {
     updateQuestion,
+    reorderQuestionUp,
     reorderQuestionDown,
     deleteQuestion
 };
