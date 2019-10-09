@@ -4,7 +4,7 @@ import { types } from '../actions/types';
 const initialState = {
     questions: [],
     loading: false,
-    error: false,
+    getQuestionsError: false,
     deleteQuestionError: false,
     deleteAnswerError: false
 };
@@ -17,20 +17,20 @@ const questionsReducer = (state = initialState, action) => {
                 ...state,
                 questions,
                 loading: false,
-                error: false
+                getQuestionsError: false
             };
         }
         case types.GET_QUESTIONS_LOADING:
             return {
                 ...state,
                 loading: true,
-                error: false
+                getQuestionsError: false
             };
         case types.GET_QUESTIONS_FAIL:
             return {
                 ...state,
                 loading: false,
-                error: true
+                getQuestionsError: true
             };
         case types.UPDATE_QUESTION: {
             const questions = [...state.questions];

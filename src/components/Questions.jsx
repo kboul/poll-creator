@@ -17,14 +17,15 @@ class Questions extends Component {
             questions: {
                 questions,
                 loading,
-                error,
+                getQuestionsError,
                 deleteQuestionError,
                 deleteAnswerError
             }
         } = this.props;
         console.log(questions);
 
-        if (error && !questions.length) return <Alert type="fetchQuestions" />;
+        if (getQuestionsError && !questions.length)
+            return <Alert type="fetchQuestions" />;
 
         const questionnaire = !questions.length ? (
             <Alert type="noQuestions" />
@@ -73,7 +74,7 @@ Questions.propTypes = {
             })
         ).isRequired,
         loading: PropTypes.bool.isRequired,
-        error: PropTypes.bool.isRequired,
+        getQuestionsError: PropTypes.bool.isRequired,
         deleteQuestionError: PropTypes.bool.isRequired,
         deleteAnswerError: PropTypes.bool.isRequired
     }).isRequired,
