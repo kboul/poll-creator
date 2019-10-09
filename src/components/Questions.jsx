@@ -13,7 +13,13 @@ class Questions extends Component {
 
     render() {
         const {
-            questions: { questions, loading, error, deleteQuestionError }
+            questions: {
+                questions,
+                loading,
+                error,
+                deleteQuestionError,
+                deleteAnswerError
+            }
         } = this.props;
         console.log(questions);
 
@@ -33,6 +39,11 @@ class Questions extends Component {
                 {deleteQuestionError && (
                     <div className="alert alert-danger mt-2">
                         There was an error while deleting the question.
+                    </div>
+                )}
+                {deleteAnswerError && (
+                    <div className="alert alert-danger mt-2">
+                        There was an error while deleting the answer.
                     </div>
                 )}
                 {questions.map(({ prompt, id, order, answers }) => (
@@ -76,7 +87,8 @@ Questions.propTypes = {
         ).isRequired,
         loading: PropTypes.bool.isRequired,
         error: PropTypes.bool.isRequired,
-        deleteQuestionError: PropTypes.bool.isRequired
+        deleteQuestionError: PropTypes.bool.isRequired,
+        deleteAnswerError: PropTypes.bool.isRequired
     }).isRequired,
     getQuestions: PropTypes.func.isRequired
 };

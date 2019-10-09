@@ -5,7 +5,8 @@ const initialState = {
     questions: [],
     loading: false,
     error: false,
-    deleteQuestionError: false
+    deleteQuestionError: false,
+    deleteAnswerError: false
 };
 
 const questionsReducer = (state = initialState, action) => {
@@ -86,9 +87,20 @@ const questionsReducer = (state = initialState, action) => {
             question.answers = [...remainingAnswers];
             return {
                 ...state,
-                questions
+                questions,
+                deleteAnswerError: false
             };
         }
+        case types.DELETE_ANSWER_FAIL:
+            return {
+                ...state,
+                deleteAnswerError: true
+            };
+        case types.DELETE_ANSWER_REVERT_ALERT:
+            return {
+                ...state,
+                deleteAnswerError: false
+            };
         default:
             return state;
     }

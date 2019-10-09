@@ -30,6 +30,11 @@ export const deleteAnswer = (id, order) => {
             });
         } catch (error) {
             console.log('There was an error while deleting the answer', error);
+            dispatch({ type: types.DELETE_ANSWER_FAIL });
+            setTimeout(
+                () => dispatch({ type: types.DELETE_ANSWER_REVERT_ALERT }),
+                2000
+            );
         }
     };
 };
