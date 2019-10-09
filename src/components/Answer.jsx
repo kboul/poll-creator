@@ -41,7 +41,12 @@ const Answer = ({ id, body, order, updateAnswer, deleteAnswer }) => {
                 </div>
             </div>
             <div className="col-xl-2 col-lg-2 col-md-3 col-sm-2 my-auto">
-                <Icons onTrashClick={() => deleteAnswer(id, order)} />
+                <Icons
+                    onAngleDownClick={() =>
+                        console.log('onAngleDownClick answer')
+                    }
+                    onTrashClick={() => deleteAnswer(id, order)}
+                />
             </div>
         </div>
     );
