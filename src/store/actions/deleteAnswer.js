@@ -24,7 +24,7 @@ export const deleteAnswer = (id, order) => {
             await httpService.put(`/api/questions/${id}`, data);
 
             dispatch({
-                type: types.DELETE_ANSWER,
+                type: types.DELETE_ANSWER_SUCCESS,
                 id,
                 order
             });

@@ -76,7 +76,7 @@ const questionsReducer = (state = initialState, action) => {
                 questions
             };
         }
-        case types.DELETE_ANSWER: {
+        case types.DELETE_ANSWER_SUCCESS: {
             const questions = [...state.questions];
             const question = questions.find(q => q.id === action.id);
             // exlude current answer
