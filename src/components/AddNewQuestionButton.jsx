@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AddNewQuestionBtn = () => {
+const AddNewQuestionButton = () => {
     return (
         <div className="offset-md-5">
             <button type="button" className="btn btn-primary">
@@ -10,4 +10,4 @@ const AddNewQuestionBtn = () => {
     );
 };
 
-export default AddNewQuestionBtn;
+export default AddNewQuestionButton;

@@ -1,12 +1,12 @@
 import React from 'react';
 import Questions from './Questions';
-import AddNewQuestionBtn from './AddNewQuestionBtn';
+import AddNewQuestionButton from './AddNewQuestionButton';
 
 const App = () => {
     return (
         <div className="container-fluid mt-4">
             <div className="col-md-9 mx-auto">
-                <AddNewQuestionBtn />
+                <AddNewQuestionButton />
                 <Questions />
             </div>
         </div>
