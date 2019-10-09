@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import httpService from '../../services/httpService';
 import { types } from './types';
 
@@ -15,8 +16,12 @@ export const deleteQuestion = id => {
             questions.splice(index, 1);
             // reorder remaining questions
             questions.forEach(q => {
-                // eslint-disable-next-line no-param-reassign
                 if (q.order >= index) q.order -= 1;
+                // take into account when deleting one item in a 2items array
+                else if (q.order === -1 && questions.length > 1) {
+                    console.log(q.order);
+                    q.order = 0;
+                }
             });
 
             await httpService.post('/api/questionnaire', questions);
