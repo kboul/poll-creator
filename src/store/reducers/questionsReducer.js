@@ -1,9 +1,11 @@
+/* eslint-disable no-param-reassign */
 import { types } from '../actions/types';
 
 const initialState = {
     questions: [],
     loading: false,
-    error: false
+    error: false,
+    deleteQuestionError: false
 };
 
 const questionsReducer = (state = initialState, action) => {
@@ -38,16 +40,30 @@ const questionsReducer = (state = initialState, action) => {
                 questions
             };
         }
-        case types.DELETE_QUESTION: {
-            const questions = [...state.questions];
-            const question = questions.find(q => q.id === action.id);
-            const index = questions.indexOf(question);
-            questions.splice(index, 1);
+        case types.DELETE_QUESTION_SUCCESS: {
+            const questions = [...action.questions];
             return {
                 ...state,
-                questions
+                questions,
+                deleteQuestionError: false
             };
         }
+        case types.DELETE_QUESTION_FAIL:
+            const questions = [...state.questions];
+            // eslint-disable-next-line func-names
+            questions.forEach(function(q, index) {
+                q.order = index;
+            });
+            return {
+                ...state,
+                questions,
+                deleteQuestionError: true
+            };
+        case types.DELETE_QUESTION_REVERT_ALERT:
+            return {
+                ...state,
+                deleteQuestionError: false
+            };
         case types.UPDATE_ANSWER: {
             const questions = [...state.questions];
             const question = questions.find(q => q.id === action.id);

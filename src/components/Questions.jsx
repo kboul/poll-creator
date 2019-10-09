@@ -13,7 +13,7 @@ class Questions extends Component {
 
     render() {
         const {
-            questions: { questions, loading, error }
+            questions: { questions, loading, error, deleteQuestionError }
         } = this.props;
         console.log(questions);
 
@@ -29,15 +29,22 @@ class Questions extends Component {
                 No questions have been created yet.
             </div>
         ) : (
-            questions.map(({ prompt, id, order, answers }) => (
-                <Question
-                    key={id}
-                    id={id}
-                    prompt={prompt}
-                    order={order}
-                    answers={answers}
-                />
-            ))
+            <>
+                {deleteQuestionError && (
+                    <div className="alert alert-danger mt-2">
+                        There was an error while deleting the question.
+                    </div>
+                )}
+                {questions.map(({ prompt, id, order, answers }) => (
+                    <Question
+                        key={id}
+                        id={id}
+                        prompt={prompt}
+                        order={order}
+                        answers={answers}
+                    />
+                ))}
+            </>
         );
 
         return loading ? <Spinner /> : questionnaire;
@@ -68,7 +75,8 @@ Questions.propTypes = {
             })
         ).isRequired,
         loading: PropTypes.bool.isRequired,
-        error: PropTypes.bool.isRequired
+        error: PropTypes.bool.isRequired,
+        deleteQuestionError: PropTypes.bool.isRequired
     }).isRequired,
     getQuestions: PropTypes.func.isRequired
 };
