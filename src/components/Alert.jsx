@@ -14,7 +14,7 @@ const Alert = ({ type }) => {
         case 'deleteQuestion':
             message = 'deleting the question';
             break;
-        case 'deleteAmswer':
+        case 'deleteAnswer':
             message = 'deleting the answer';
             break;
         default:
