@@ -23,8 +23,11 @@ const Alert = ({ type }) => {
         case 'reorderQuestionDown':
             message = 'reordering the question down';
             break;
+        case 'updateQuestion':
+            message = 'updating the question';
+            break;
         case 'updateAnswer':
-            message = 'updating the aswer';
+            message = 'updating the answer';
             break;
         default:
             return;

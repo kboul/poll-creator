@@ -22,6 +22,7 @@ class Questions extends Component {
                 deleteAnswerError,
                 reorderQuestionUpError,
                 reorderQuestionDownError,
+                updateQuestionError,
                 updateAnswerError
             }
         } = this.props;
@@ -34,13 +35,14 @@ class Questions extends Component {
             <Alert type="noQuestions" />
         ) : (
             <>
-                {deleteQuestionError && <Alert type="deleteQuestion" />}
-                {deleteAnswerError && <Alert type="deleteAnswer" />}
                 {reorderQuestionUpError && <Alert type="reorderQuestionUp" />}
                 {reorderQuestionDownError && (
                     <Alert type="reorderQuestionDown" />
                 )}
+                {updateQuestionError && <Alert type="updateQuestion" />}
                 {updateAnswerError && <Alert type="updateAnswer" />}
+                {deleteQuestionError && <Alert type="deleteQuestion" />}
+                {deleteAnswerError && <Alert type="deleteAnswer" />}
 
                 {questions.map(({ prompt, id, order, answers }) => (
                     <Question
@@ -87,6 +89,7 @@ Questions.propTypes = {
         deleteAnswerError: PropTypes.bool.isRequired,
         reorderQuestionUpError: PropTypes.bool.isRequired,
         reorderQuestionDownError: PropTypes.bool.isRequired,
+        updateQuestionError: PropTypes.bool.isRequired,
         updateAnswerError: PropTypes.bool.isRequired
     }).isRequired,
     getQuestions: PropTypes.func.isRequired

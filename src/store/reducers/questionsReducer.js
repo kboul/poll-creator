@@ -6,11 +6,12 @@ const initialState = {
     questions: [],
     loading: false,
     getQuestionsError: false,
-    deleteQuestionError: false,
-    deleteAnswerError: false,
     reorderQuestionUpError: false,
     reorderQuestionDownError: false,
-    updateAnswerError: false
+    updateQuestionError: false,
+    updateAnswerError: false,
+    deleteQuestionError: false,
+    deleteAnswerError: false
 };
 
 const questionsReducer = (state = initialState, action) => {
@@ -45,6 +46,17 @@ const questionsReducer = (state = initialState, action) => {
                 questions
             };
         }
+        case types.UPDATE_QUESTION_FAIL:
+            // todo revert state
+            return {
+                ...state,
+                updateQuestionError: true
+            };
+        case types.UPDATE_QUESTION_REVERT_ALERT:
+            return {
+                ...state,
+                updateQuestionError: false
+            };
         case types.DELETE_QUESTION_SUCCESS: {
             const questions = [...action.questions];
             return {
