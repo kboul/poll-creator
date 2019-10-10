@@ -11,6 +11,7 @@ export const deleteQuestion = id => {
     return async (dispatch, getState) => {
         try {
             const questions = [...getState().questions.questions];
+            // if questions are less than 10 then remove possible warning & carry on
             if (questions.length <= 10) {
                 dispatch({
                     type: types.TEN_QUESTIONS_REACHED,

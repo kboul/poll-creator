@@ -6,6 +6,7 @@ export const createQuestion = () => {
     return async (dispatch, getState) => {
         try {
             const questions = [...getState().questions.questions];
+            // if questions reached 10 then flag warning & return
             if (questions.length > 9) {
                 console.log('10 reached');
                 dispatch({
