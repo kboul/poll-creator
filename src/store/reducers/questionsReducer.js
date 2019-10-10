@@ -7,6 +7,7 @@ const initialState = {
     loading: false,
     getQuestionsError: false,
     createQuestionError: false,
+    createAnswerError: false,
     tenQuestionsReached: false,
     reorderQuestionUpError: false,
     reorderQuestionDownError: false,
@@ -61,6 +62,28 @@ const questionsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 tenQuestionsReached: action.status
+            };
+        case types.CREATE_ANSWER_SUCCESS: {
+            return {
+                ...state,
+                createAnswerError: false
+            };
+        }
+        case types.CREATE_ANSWER_FAIL: {
+            const questions = [...state.questions];
+            const question = questions.find(q => q.id === action.id);
+            const answers = [...question.answers];
+            question.answers = answers.splice(0, answers.length - 1);
+            return {
+                ...state,
+                questions,
+                createAnswerError: true
+            };
+        }
+        case types.CREATE_ANSWER_REVERT_ALERT:
+            return {
+                ...state,
+                createAnswerError: false
             };
         case types.UPDATE_QUESTION_SUCCESS: {
             const questions = [...state.questions];

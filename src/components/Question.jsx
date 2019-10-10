@@ -7,6 +7,7 @@ import SaveButton from './SaveButton';
 import { updateQuestion } from '../store/actions/updateQuestion';
 import { reorderQuestionUp } from '../store/actions/reorderQuestionUp';
 import { reorderQuestionDown } from '../store/actions/reorderQuestionDown';
+import { createAnswer } from '../store/actions/createAnswer';
 import { deleteQuestion } from '../store/actions/deleteQuestion';
 import styles from '../sass/Question.module.sass';
 
@@ -18,10 +19,21 @@ const Question = ({
     updateQuestion,
     reorderQuestionUp,
     reorderQuestionDown,
+    createAnswer,
     deleteQuestion
 }) => {
     const [value, setValue] = useState(prompt);
     const [toggleSave, setToggleSave] = useState(false);
+
+    const handleCreateAnswer = (id, e) => {
+        const {
+            target: { value }
+        } = e;
+        if (e.key === 'Enter' && value.length > 0) {
+            createAnswer(id, value);
+            e.target.value = '';
+        }
+    };
 
     return (
         <div className="card my-4" key={id}>
@@ -71,6 +83,12 @@ const Question = ({
                         <hr />
                     </div>
                 ))}
+                <input
+                    type="text"
+                    placeholder="this is not an answer yet"
+                    className={`form-control ${styles.input}`}
+                    onKeyDown={e => handleCreateAnswer(id, e)}
+                />
             </div>
         </div>
     );
@@ -89,6 +107,7 @@ Question.propTypes = {
     updateQuestion: PropTypes.func.isRequired,
     reorderQuestionUp: PropTypes.func.isRequired,
     reorderQuestionDown: PropTypes.func.isRequired,
+    createAnswer: PropTypes.func.isRequired,
     deleteQuestion: PropTypes.func.isRequired
 };
 
@@ -96,6 +115,7 @@ const mapDispatchToProps = {
     updateQuestion,
     reorderQuestionUp,
     reorderQuestionDown,
+    createAnswer,
     deleteQuestion
 };
 

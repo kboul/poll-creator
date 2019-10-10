@@ -16,6 +16,9 @@ const Alert = ({ type }) => {
             message = 'You cannot add more than 10 questions.';
             alert = 'warning';
             break;
+        case 'createAnswer':
+            message += 'creating the answer';
+            break;
         case 'noQuestions':
             message = 'No questions have been created yet.';
             alert = 'warning';
