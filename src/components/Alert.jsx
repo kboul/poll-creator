@@ -17,6 +17,9 @@ const Alert = ({ type }) => {
         case 'deleteAnswer':
             message = 'deleting the answer';
             break;
+        case 'reorderQuestionUp':
+            message = 'reordering the question up';
+            break;
         default:
             return;
     }
