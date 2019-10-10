@@ -54,7 +54,7 @@ const Question = ({
                             )}
                         </div>
                     </div>
-                    <div className="col-xl-2 col-lg-20 col-md-3 col-sm-2 my-auto">
+                    <div className="col-xl-2 col-lg-2 col-md-3 col-sm-2 my-auto">
                         <Icons
                             onAngleUpClick={() => reorderQuestionUp(id)}
                             onAngleDownClick={() => reorderQuestionDown(id)}
