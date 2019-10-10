@@ -10,7 +10,7 @@ export const updateQuestion = (prompt, id) => {
 
             await httpService.put(`/api/questions/${id}`, data);
             dispatch({
-                type: types.UPDATE_QUESTION,
+                type: types.UPDATE_QUESTION_SUCCESS,
                 prompt,
                 id
             });

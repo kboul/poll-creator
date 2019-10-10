@@ -36,7 +36,7 @@ const questionsReducer = (state = initialState, action) => {
                 loading: false,
                 getQuestionsError: true
             };
-        case types.UPDATE_QUESTION: {
+        case types.UPDATE_QUESTION_SUCCESS: {
             const questions = [...state.questions];
             const question = questions.find(q => q.id === action.id);
             question.prompt = action.prompt;
