@@ -105,7 +105,7 @@ const questionsReducer = (state = initialState, action) => {
                 deleteAnswerError: false
             };
         case types.REORDER_QUESTION_UP_SUCCESS: {
-            const questions = [...action.questions];
+            const questions = [...action.data];
             return {
                 ...state,
                 questions,
@@ -113,26 +113,7 @@ const questionsReducer = (state = initialState, action) => {
             };
         }
         case types.REORDER_QUESTION_UP_FAIL: {
-            const questions = [...state.questions];
-            // find question to be changed
-            const question = questions.find(q => q.id === action.id);
-            // store initial order of item to change
-            const initialOrder = question.order;
-            // find next quetion of the question to be changed
-            const nextQuestion = questions.find(
-                q => q.order === initialOrder + 1
-            );
-            if (nextQuestion) {
-                // change the order of the next question
-                nextQuestion.order -= 1;
-                // change the order of the selected question
-                question.order += 1;
-            } else {
-                questions.forEach(q => (q.order += 1));
-                question.order = 0;
-            }
-            // sort the array after the changes
-            questions.sort((a, b) => a.order - b.order);
+            const questions = [...action.data];
             return {
                 ...state,
                 questions,
@@ -145,34 +126,14 @@ const questionsReducer = (state = initialState, action) => {
                 reorderQuestionUpError: false
             };
         case types.REORDER_QUESTION_DOWN_SUCCESS: {
-            const questions = [...action.questions];
+            const questions = [...action.data];
             return {
                 ...state,
                 questions
             };
         }
         case types.REORDER_QUESTION_DOWN_FAIL: {
-            const questions = [...state.questions];
-            // find question to be changed
-            const question = questions.find(q => q.id === action.id);
-            // store initial order of item to change
-            const initialOrder = question.order;
-            // find previous quetion of the question to be changed
-            const nextQuestion = questions.find(
-                q => q.order === initialOrder - 1
-            );
-            if (nextQuestion) {
-                // change the order of the previous question
-                nextQuestion.order += 1;
-                // change the order of the selected question
-                question.order -= 1;
-            } else {
-                questions.forEach(q => (q.order -= 1));
-                question.order = questions.length - 1;
-            }
-            // sort the array after the changes
-            questions.sort((a, b) => a.order - b.order);
-
+            const questions = [...action.data];
             return {
                 ...state,
                 questions,
