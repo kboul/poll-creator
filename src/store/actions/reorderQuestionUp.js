@@ -4,7 +4,7 @@ export const reorderQuestionUp = id => {
     return async dispatch => {
         try {
             dispatch({
-                type: types.REORDER_QUESTION_UP,
+                type: types.REORDER_QUESTION_UP_SUCCESS,
                 id
             });
         } catch (error) {

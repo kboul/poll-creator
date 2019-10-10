@@ -102,7 +102,7 @@ const questionsReducer = (state = initialState, action) => {
                 ...state,
                 deleteAnswerError: false
             };
-        case types.REORDER_QUESTION_UP: {
+        case types.REORDER_QUESTION_UP_SUCCESS: {
             const questions = [...state.questions];
             // find question to be changed
             const question = questions.find(q => q.id === action.id);
