@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Answer from './Answer';
 import Icons from './Icons';
@@ -9,6 +8,7 @@ import { reorderQuestionUp } from '../store/actions/reorderQuestionUp';
 import { reorderQuestionDown } from '../store/actions/reorderQuestionDown';
 import { createAnswer } from '../store/actions/createAnswer';
 import { deleteQuestion } from '../store/actions/deleteQuestion';
+import { propTypes } from '../propTypes/question';
 import styles from '../sass/Question.module.sass';
 
 const Question = ({
@@ -94,22 +94,7 @@ const Question = ({
     );
 };
 
-Question.propTypes = {
-    answers: PropTypes.arrayOf(
-        PropTypes.shape({
-            order: PropTypes.number,
-            body: PropTypes.string
-        })
-    ).isRequired,
-    id: PropTypes.string.isRequired,
-    order: PropTypes.number.isRequired,
-    prompt: PropTypes.string.isRequired,
-    updateQuestion: PropTypes.func.isRequired,
-    reorderQuestionUp: PropTypes.func.isRequired,
-    reorderQuestionDown: PropTypes.func.isRequired,
-    createAnswer: PropTypes.func.isRequired,
-    deleteQuestion: PropTypes.func.isRequired
-};
+Question.propTypes = propTypes;
 
 const mapDispatchToProps = {
     updateQuestion,
