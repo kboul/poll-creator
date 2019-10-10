@@ -9,7 +9,8 @@ const initialState = {
     deleteQuestionError: false,
     deleteAnswerError: false,
     reorderQuestionUpError: false,
-    reorderQuestionDownError: false
+    reorderQuestionDownError: false,
+    updateAnswerError: false
 };
 
 const questionsReducer = (state = initialState, action) => {
@@ -77,9 +78,21 @@ const questionsReducer = (state = initialState, action) => {
             answer[0].body = action.body;
             return {
                 ...state,
-                questions
+                questions,
+                updateAnswerError: false
             };
         }
+        case types.UPDATE_ANSWER_FAIL:
+            // todo revert state
+            return {
+                ...state,
+                updateAnswerError: true
+            };
+        case types.UPDATE_ANSWER_REVERT_ALERT:
+            return {
+                ...state,
+                updateAnswerError: false
+            };
         case types.DELETE_ANSWER_SUCCESS: {
             const questions = [...state.questions];
             const question = questions.find(q => q.id === action.id);

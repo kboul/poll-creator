@@ -23,6 +23,9 @@ const Alert = ({ type }) => {
         case 'reorderQuestionDown':
             message = 'reordering the question down';
             break;
+        case 'updateAnswer':
+            message = 'updating the aswer';
+            break;
         default:
             return;
     }
