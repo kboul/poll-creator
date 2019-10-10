@@ -20,17 +20,9 @@ export const createQuestion = () => {
                 "id": idGenerator(),
                 "prompt": "",
                 "order": questions.length,
-                "answers": [
-                    {
-                        "order": 1,
-                        "body": "Yes"
-                    },
-                    {
-                        "order": 2,
-                        "body": "No"
-                    }
-                ]
+                "answers": []
             }
+            
             const newQuestions = [...questions, newQuestion]
 
             await httpService.post('/api/questionnaire', newQuestions);
