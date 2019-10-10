@@ -6,6 +6,8 @@ const initialState = {
     questions: [],
     loading: false,
     getQuestionsError: false,
+    createQuestionError: false,
+    tenQuestionsReached: false,
     reorderQuestionUpError: false,
     reorderQuestionDownError: false,
     updateQuestionError: false,
@@ -36,6 +38,29 @@ const questionsReducer = (state = initialState, action) => {
                 ...state,
                 loading: false,
                 getQuestionsError: true
+            };
+        case types.CREATE_QUESTION_SUCCESS: {
+            const questions = action.newQuestions;
+            return {
+                ...state,
+                questions,
+                createQuestionError: false
+            };
+        }
+        case types.CREATE_QUESTION_FAIL:
+            return {
+                ...state,
+                createQuestionError: true
+            };
+        case types.CREATE_QUESTION_REVERT_ALERT:
+            return {
+                ...state,
+                createQuestionError: false
+            };
+        case types.TEN_QUESTIONS_REACHED:
+            return {
+                ...state,
+                tenQuestionsReached: action.status
             };
         case types.UPDATE_QUESTION_SUCCESS: {
             const questions = [...state.questions];

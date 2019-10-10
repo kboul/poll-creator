@@ -11,6 +11,13 @@ export const deleteQuestion = id => {
     return async (dispatch, getState) => {
         try {
             const questions = [...getState().questions.questions];
+            if (questions.length <= 10) {
+                dispatch({
+                    type: types.TEN_QUESTIONS_REACHED,
+                    status: false
+                });
+            }
+
             const question = questions.find(q => q.id === id);
             const index = questions.indexOf(question);
             questions.splice(index, 1);

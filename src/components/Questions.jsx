@@ -18,6 +18,8 @@ class Questions extends Component {
                 questions,
                 loading,
                 getQuestionsError,
+                createQuestionError,
+                tenQuestionsReached,
                 deleteQuestionError,
                 deleteAnswerError,
                 reorderQuestionUpError,
@@ -35,6 +37,8 @@ class Questions extends Component {
             <Alert type="noQuestions" />
         ) : (
             <>
+                {createQuestionError && <Alert type="createQuestion" />}
+                {tenQuestionsReached && <Alert type="tenQuestionsReached" />}
                 {reorderQuestionUpError && <Alert type="reorderQuestionUp" />}
                 {reorderQuestionDownError && (
                     <Alert type="reorderQuestionDown" />
@@ -85,6 +89,8 @@ Questions.propTypes = {
         ).isRequired,
         loading: PropTypes.bool.isRequired,
         getQuestionsError: PropTypes.bool.isRequired,
+        createQuestionError: PropTypes.bool.isRequired,
+        tenQuestionsReached: PropTypes.bool.isRequired,
         deleteQuestionError: PropTypes.bool.isRequired,
         deleteAnswerError: PropTypes.bool.isRequired,
         reorderQuestionUpError: PropTypes.bool.isRequired,
