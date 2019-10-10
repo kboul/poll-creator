@@ -20,6 +20,9 @@ const Alert = ({ type }) => {
         case 'reorderQuestionUp':
             message = 'reordering the question up';
             break;
+        case 'reorderQuestionDown':
+            message = 'reordering the question down';
+            break;
         default:
             return;
     }
