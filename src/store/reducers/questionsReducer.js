@@ -68,7 +68,7 @@ const questionsReducer = (state = initialState, action) => {
                 ...state,
                 deleteQuestionError: false
             };
-        case types.UPDATE_ANSWER: {
+        case types.UPDATE_ANSWER_SUCCESS: {
             const questions = [...state.questions];
             const question = questions.find(q => q.id === action.id);
             const answer = question.answers.filter(

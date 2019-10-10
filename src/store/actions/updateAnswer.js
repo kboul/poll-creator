@@ -17,7 +17,7 @@ export const updateAnswer = (body, id, order) => {
 
             await httpService.put(`/api/questions/${id}`, data);
             dispatch({
-                type: types.UPDATE_ANSWER,
+                type: types.UPDATE_ANSWER_SUCCESS,
                 body,
                 id,
                 order
