@@ -19,23 +19,16 @@ export const deleteAnswer = (id, order) => {
                 a => a.order !== order
             );
 
-            console.log(remainingAnswers);
-            const orderRemainingAnswers = [...remainingAnswers];
-            remainingAnswers.forEach((a, index) => {
-                a.order = index + 1;
-            });
+            question.answers = remainingAnswers;
 
             const data = {
-                answers: orderRemainingAnswers
+                answers: remainingAnswers
             };
 
             await httpService.put(`/api/questions/${id}`, data);
 
             dispatch({
-                type: types.DELETE_ANSWER_SUCCESS,
-                id,
-                order,
-                orderRemainingAnswers
+                type: types.DELETE_ANSWER_SUCCESS
             });
         } catch (error) {
             console.log('There was an error while deleting the answer', error);

@@ -154,16 +154,8 @@ const questionsReducer = (state = initialState, action) => {
                 updateAnswerError: false
             };
         case types.DELETE_ANSWER_SUCCESS: {
-            const questions = [...state.questions];
-            const question = questions.find(q => q.id === action.id);
-            // exlude current answer
-            // const remainingAnswers = question.answers.filter(
-            //     a => a.order !== action.order
-            // );
-            question.answers = [...action.orderRemainingAnswers];
             return {
                 ...state,
-                questions,
                 deleteAnswerError: false
             };
         }
