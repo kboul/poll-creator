@@ -34,10 +34,9 @@ class Questions extends Component {
         if (getQuestionsError && !questions.length)
             return <Alert type="fetchQuestions" />;
 
-        const questionnaire = !questions.length ? (
-            <Alert type="noQuestions" />
-        ) : (
+        const questionnaire = (
             <>
+                {!questions.length && <Alert type="noQuestions" />}
                 {createQuestionError && <Alert type="createQuestion" />}
                 {tenQuestionsReached && <Alert type="tenQuestionsReached" />}
                 {createAnswerError && <Alert type="createAnswer" />}
