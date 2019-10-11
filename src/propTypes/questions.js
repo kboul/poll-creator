@@ -1,20 +1,9 @@
 import PropTypes from 'prop-types';
+import { questionsModel } from './questionsModel';
 
 export const propTypes = {
     questions: PropTypes.shape({
-        questions: PropTypes.arrayOf(
-            PropTypes.shape({
-                answers: PropTypes.arrayOf(
-                    PropTypes.shape({
-                        order: PropTypes.number,
-                        body: PropTypes.string
-                    })
-                ),
-                id: PropTypes.string,
-                order: PropTypes.number,
-                prompt: PropTypes.string
-            })
-        ).isRequired,
+        ...questionsModel,
         loading: PropTypes.bool.isRequired,
         getQuestionsError: PropTypes.bool.isRequired,
         createAnswerError: PropTypes.bool.isRequired,
