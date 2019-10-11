@@ -6,8 +6,8 @@ const App = () => {
     return (
         <div className="container-fluid mt-4">
             <div className="col-md-9 mx-auto">
-                <AddNewQuestionButton />
                 <Questions />
+                <AddNewQuestionButton />
             </div>
         </div>
     );
