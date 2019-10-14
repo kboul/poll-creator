@@ -12,7 +12,7 @@ export const deleteAnswer = (id, order) => {
         try {
             const questions = [...getState().questions.questions];
             const question = questions.find(q => q.id === id);
-            // exlude naswer to be deleted form collection
+            // exlude answer to be deleted from collection
             const remainingAnswers = question.answers.filter(
                 a => a.order !== order
             );
@@ -28,7 +28,7 @@ export const deleteAnswer = (id, order) => {
             });
 
             const data = {
-                answers: [...reorderRemainingAnswers]
+                "answers": [...reorderRemainingAnswers]
             };
 
             await httpService.put(`/api/questions/${id}`, data);
