@@ -1,5 +1,3 @@
-/* eslint-disable no-return-assign */
-/* eslint-disable no-param-reassign */
 import { types } from '../actions/types';
 
 const initialState = {
@@ -114,14 +112,8 @@ const questionsReducer = (state = initialState, action) => {
             };
         }
         case types.DELETE_QUESTION_FAIL:
-            const questions = [...state.questions];
-            // eslint-disable-next-line func-names
-            questions.forEach(function(q, index) {
-                q.order = index;
-            });
             return {
                 ...state,
-                questions,
                 deleteQuestionError: true
             };
         case types.DELETE_QUESTION_REVERT_ALERT:
