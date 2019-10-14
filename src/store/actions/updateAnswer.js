@@ -13,7 +13,7 @@ export const updateAnswer = (body, id, order) => {
                 "answers": [...question.answers]
             }
 
-            await httpService.put(`/api/questions/${id}`, data);
+            await httpService.put(`/api/questions/${id}?debug=true`, data);
             dispatch({
                 type: types.UPDATE_ANSWER_SUCCESS,
                 body,

@@ -8,7 +8,7 @@ export const updateQuestion = (prompt, id) => {
                 "prompt": prompt
             };
 
-            await httpService.put(`/api/questions/${id}`, data);
+            await httpService.put(`/api/questions/${id}?debug=true`, data);
             dispatch({
                 type: types.UPDATE_QUESTION_SUCCESS,
                 prompt,
