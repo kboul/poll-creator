@@ -10,6 +10,7 @@ const initialState = {
     reorderQuestionUpError: false,
     reorderQuestionDownError: false,
     reorderAnswerUpError: false,
+    reorderAnswerDownError: false,
     updateQuestionError: false,
     updateAnswerError: false,
     deleteQuestionError: false,
@@ -57,11 +58,6 @@ const questionsReducer = (state = initialState, action) => {
                 ...state,
                 createQuestionError: false
             };
-        case types.TEN_QUESTIONS_REACHED:
-            return {
-                ...state,
-                tenQuestionsReached: action.status
-            };
         case types.CREATE_ANSWER_SUCCESS: {
             const questions = [...state.questions];
             const question = questions.find(q => q.id === action.id);
@@ -83,87 +79,10 @@ const questionsReducer = (state = initialState, action) => {
                 ...state,
                 createAnswerError: false
             };
-        case types.UPDATE_QUESTION_SUCCESS: {
-            const questions = [...state.questions];
-            const question = questions.find(q => q.id === action.id);
-            question.prompt = action.prompt;
+        case types.TEN_QUESTIONS_REACHED:
             return {
                 ...state,
-                questions
-            };
-        }
-        case types.UPDATE_QUESTION_FAIL:
-            // todo revert state
-            return {
-                ...state,
-                updateQuestionError: true
-            };
-        case types.UPDATE_QUESTION_REVERT_ALERT:
-            return {
-                ...state,
-                updateQuestionError: false
-            };
-        case types.DELETE_QUESTION_SUCCESS: {
-            const questions = [...action.questions];
-            return {
-                ...state,
-                questions,
-                deleteQuestionError: false
-            };
-        }
-        case types.DELETE_QUESTION_FAIL:
-            return {
-                ...state,
-                deleteQuestionError: true
-            };
-        case types.DELETE_QUESTION_REVERT_ALERT:
-            return {
-                ...state,
-                deleteQuestionError: false
-            };
-        case types.UPDATE_ANSWER_SUCCESS: {
-            const questions = [...state.questions];
-            const question = questions.find(q => q.id === action.id);
-            const answer = question.answers.filter(
-                a => a.order === action.order
-            );
-            answer[0].body = action.body;
-            return {
-                ...state,
-                questions,
-                updateAnswerError: false
-            };
-        }
-        case types.UPDATE_ANSWER_FAIL:
-            // todo revert state
-            return {
-                ...state,
-                updateAnswerError: true
-            };
-        case types.UPDATE_ANSWER_REVERT_ALERT:
-            return {
-                ...state,
-                updateAnswerError: false
-            };
-        case types.DELETE_ANSWER_SUCCESS: {
-            const questions = [...state.questions];
-            const question = questions.find(q => q.id === action.id);
-            question.answers = [...action.reorderRemainingAnswers];
-            return {
-                ...state,
-                questions,
-                deleteAnswerError: false
-            };
-        }
-        case types.DELETE_ANSWER_FAIL:
-            return {
-                ...state,
-                deleteAnswerError: true
-            };
-        case types.DELETE_ANSWER_REVERT_ALERT:
-            return {
-                ...state,
-                deleteAnswerError: false
+                tenQuestionsReached: action.status
             };
         case types.REORDER_QUESTION_UP_SUCCESS: {
             const questions = [...action.data];
@@ -222,6 +141,106 @@ const questionsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 reorderAnswerUpError: false
+            };
+        case types.REORDER_ANSWER_DOWN_SUCCESS: {
+            return {
+                ...state,
+                reorderAnswerDownError: false
+            };
+        }
+        case types.REORDER_ANSWER_DOWN_FAIL: {
+            return {
+                ...state,
+                reorderAnswerDownError: true
+            };
+        }
+        case types.REORDER_ANSWER_DOWN_REVERT_ALERT:
+            return {
+                ...state,
+                reorderAnswerDownError: false
+            };
+        case types.UPDATE_QUESTION_SUCCESS: {
+            const questions = [...state.questions];
+            const question = questions.find(q => q.id === action.id);
+            question.prompt = action.prompt;
+            return {
+                ...state,
+                questions
+            };
+        }
+        case types.UPDATE_QUESTION_FAIL:
+            // todo revert state
+            return {
+                ...state,
+                updateQuestionError: true
+            };
+        case types.UPDATE_QUESTION_REVERT_ALERT:
+            return {
+                ...state,
+                updateQuestionError: false
+            };
+        case types.UPDATE_ANSWER_SUCCESS: {
+            const questions = [...state.questions];
+            const question = questions.find(q => q.id === action.id);
+            const answer = question.answers.filter(
+                a => a.order === action.order
+            );
+            answer[0].body = action.body;
+            return {
+                ...state,
+                questions,
+                updateAnswerError: false
+            };
+        }
+        case types.UPDATE_ANSWER_FAIL:
+            // todo revert state
+            return {
+                ...state,
+                updateAnswerError: true
+            };
+        case types.UPDATE_ANSWER_REVERT_ALERT:
+            return {
+                ...state,
+                updateAnswerError: false
+            };
+        case types.DELETE_QUESTION_SUCCESS: {
+            const questions = [...action.questions];
+            return {
+                ...state,
+                questions,
+                deleteQuestionError: false
+            };
+        }
+        case types.DELETE_QUESTION_FAIL:
+            return {
+                ...state,
+                deleteQuestionError: true
+            };
+        case types.DELETE_QUESTION_REVERT_ALERT:
+            return {
+                ...state,
+                deleteQuestionError: false
+            };
+
+        case types.DELETE_ANSWER_SUCCESS: {
+            const questions = [...state.questions];
+            const question = questions.find(q => q.id === action.id);
+            question.answers = [...action.reorderRemainingAnswers];
+            return {
+                ...state,
+                questions,
+                deleteAnswerError: false
+            };
+        }
+        case types.DELETE_ANSWER_FAIL:
+            return {
+                ...state,
+                deleteAnswerError: true
+            };
+        case types.DELETE_ANSWER_REVERT_ALERT:
+            return {
+                ...state,
+                deleteAnswerError: false
             };
         default:
             return state;
