@@ -10,7 +10,7 @@ import { types } from './types';
 export const deleteQuestion = id => {
     return async (dispatch, getState) => {
         try {
-            const questions = [...getState().questions.questions];
+            let questions = [...getState().questions.questions];
             // if questions are less than 10 then remove possible warning & carry on
             if (questions.length <= 10) {
                 dispatch({
@@ -21,7 +21,7 @@ export const deleteQuestion = id => {
 
             const question = questions.find(q => q.id === id);
             const index = questions.indexOf(question);
-            questions.splice(index, 1);
+            questions = questions.filter(q => q.id !== id);
             // reorder remaining questions
             questions.forEach(q => {
                 if (q.order > index) q.order -= 1;
