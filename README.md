@@ -4,7 +4,7 @@ A react app to help a researcher create a questionnaire using React.
 
 ## Run the back-end
 
-Clone and install the project from [here](https://github.com/pollfish/hiring-process/tree/master/mock-api)
+Clone, install & run the project from [here](https://github.com/pollfish/hiring-process/tree/master/mock-api)
 
 ## Run the front-end
 
