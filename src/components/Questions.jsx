@@ -25,6 +25,7 @@ class Questions extends Component {
                 deleteAnswerError,
                 reorderQuestionUpError,
                 reorderQuestionDownError,
+                reorderAnswerUpError,
                 updateQuestionError,
                 updateAnswerError
             }
@@ -46,6 +47,7 @@ class Questions extends Component {
                 {reorderQuestionDownError && (
                     <Alert type="reorderQuestionDown" />
                 )}
+                {reorderAnswerUpError && <Alert type="reorderAnswerUp" />}
                 {updateQuestionError && <Alert type="updateQuestion" />}
                 {updateAnswerError && <Alert type="updateAnswer" />}
                 {deleteQuestionError && <Alert type="deleteQuestion" />}
