@@ -9,6 +9,7 @@ import { reorderQuestionDown } from '../store/actions/reorderQuestionDown';
 import { createAnswer } from '../store/actions/createAnswer';
 import { deleteQuestion } from '../store/actions/deleteQuestion';
 import { propTypes } from '../propTypes/question';
+import { idGenerator } from '../utils/idGenerator';
 import styles from '../sass/Question.module.sass';
 
 const Question = ({
@@ -78,7 +79,7 @@ const Question = ({
                 <hr />
 
                 {answers.map(({ order, body }) => (
-                    <div key={order}>
+                    <div key={idGenerator()}>
                         <Answer id={id} body={body} order={order} />
                         <hr />
                     </div>
