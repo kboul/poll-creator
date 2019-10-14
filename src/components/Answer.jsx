@@ -5,9 +5,17 @@ import Icons from './Icons';
 import SaveButton from './SaveButton';
 import { updateAnswer } from '../store/actions/updateAnswer';
 import { deleteAnswer } from '../store/actions/deleteAnswer';
+import { reorderAnswerUp } from '../store/actions/reorderAnswerUp';
 import styles from '../sass/Answer.module.sass';
 
-const Answer = ({ id, body, order, updateAnswer, deleteAnswer }) => {
+const Answer = ({
+    id,
+    body,
+    order,
+    updateAnswer,
+    deleteAnswer,
+    reorderAnswerUp
+}) => {
     const [value, setValue] = useState(body);
     const [toggleSave, setToggleSave] = useState(false);
 
@@ -42,7 +50,7 @@ const Answer = ({ id, body, order, updateAnswer, deleteAnswer }) => {
             </div>
             <div className="col-xl-2 col-lg-2 col-md-3 col-sm-2 my-auto">
                 <Icons
-                    onAngleUpClick={() => console.log('onAngleUpClick answer')}
+                    onAngleUpClick={() => reorderAnswerUp(id, order)}
                     onAngleDownClick={() =>
                         console.log('onAngleDownClick answer')
                     }
@@ -58,12 +66,14 @@ Answer.propTypes = {
     body: PropTypes.string.isRequired,
     order: PropTypes.number.isRequired,
     updateAnswer: PropTypes.func.isRequired,
-    deleteAnswer: PropTypes.func.isRequired
+    deleteAnswer: PropTypes.func.isRequired,
+    reorderAnswerUp: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = {
     updateAnswer,
-    deleteAnswer
+    deleteAnswer,
+    reorderAnswerUp
 };
 
 export default connect(
