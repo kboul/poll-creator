@@ -41,6 +41,9 @@ const Alert = ({ type }) => {
         case 'updateAnswer':
             message += 'updating the answer';
             break;
+        case 'reorderAnswernUp':
+            message += 'reordering the answer up';
+            break;
         default:
             return;
     }
