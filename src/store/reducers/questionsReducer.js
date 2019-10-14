@@ -180,12 +180,7 @@ const questionsReducer = (state = initialState, action) => {
                 updateQuestionError: false
             };
         case types.UPDATE_ANSWER_SUCCESS: {
-            const questions = [...state.questions];
-            const question = questions.find(q => q.id === action.id);
-            const answer = question.answers.filter(
-                a => a.order === action.order
-            );
-            answer[0].body = action.body;
+            const questions = [...action.questions];
             return {
                 ...state,
                 questions,

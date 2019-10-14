@@ -16,9 +16,7 @@ export const updateAnswer = (body, id, order) => {
             await httpService.put(`/api/questions/${id}?debug=true`, data);
             dispatch({
                 type: types.UPDATE_ANSWER_SUCCESS,
-                body,
-                id,
-                order
+                questions
             });
         } catch (error) {
             console.log('There was an error while updating the answer', error);
