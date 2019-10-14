@@ -11,6 +11,7 @@ const initialState = {
     tenQuestionsReached: false,
     reorderQuestionUpError: false,
     reorderQuestionDownError: false,
+    reorderAnswerUpError: false,
     updateQuestionError: false,
     updateAnswerError: false,
     deleteQuestionError: false,
@@ -70,13 +71,16 @@ const questionsReducer = (state = initialState, action) => {
             };
         }
         case types.CREATE_ANSWER_FAIL: {
-            const questions = [...state.questions];
-            const question = questions.find(q => q.id === action.id);
-            const answers = [...question.answers];
-            question.answers = answers.splice(0, answers.length - 1);
+            // const questions = [...state.questions];
+            // const question = questions.find(q => q.id === action.id);
+            // const answers = [...question.answers];
+            // // question.answers = [
+            // //     ...answers.slice(0, answers.length - 1),
+            // //     ...answers.slice(answers.length)
+            // // ];
             return {
                 ...state,
-                questions,
+                // questions,
                 createAnswerError: true
             };
         }
@@ -209,6 +213,23 @@ const questionsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 reorderQuestionDownError: false
+            };
+        case types.REORDER_ANSWER_UP_SUCCESS: {
+            return {
+                ...state,
+                reorderAnswerUpError: false
+            };
+        }
+        case types.REORDER_ANSWER_UP_FAIL: {
+            return {
+                ...state,
+                reorderAnswerUpError: true
+            };
+        }
+        case types.REORDER_ANSWER_UP_REVERT_ALERT:
+            return {
+                ...state,
+                reorderAnswerUpError: false
             };
         default:
             return state;
