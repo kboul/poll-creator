@@ -38,7 +38,9 @@ class Questions extends Component {
             <>
                 {!questions.length && <Alert type="noQuestions" />}
                 {createQuestionError && <Alert type="createQuestion" />}
-                {tenQuestionsReached && <Alert type="tenQuestionsReached" />}
+                {(tenQuestionsReached || questions.length === 10) && (
+                    <Alert type="tenQuestionsReached" />
+                )}
                 {createAnswerError && <Alert type="createAnswer" />}
                 {reorderQuestionUpError && <Alert type="reorderQuestionUp" />}
                 {reorderQuestionDownError && (

@@ -7,13 +7,12 @@ export const createQuestion = () => {
         try {
             const questions = [...getState().questions.questions];
             // if questions reached 10 then flag warning & return
-            if (questions.length > 9) {
+            if (questions.length === 9) {
                 console.log('10 reached');
                 dispatch({
                     type: types.TEN_QUESTIONS_REACHED,
                     status: true
                 });
-                return;
             }
 
             const newQuestion = {
@@ -35,6 +34,10 @@ export const createQuestion = () => {
                 error
             );
             dispatch({ type: types.CREATE_QUESTION_FAIL });
+            dispatch({
+                type: types.TEN_QUESTIONS_REACHED,
+                status: false
+            });
             setTimeout(
                 () => dispatch({ type: types.CREATE_QUESTION_REVERT_ALERT }),
                 2000
