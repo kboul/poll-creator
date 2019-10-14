@@ -14,6 +14,7 @@ export const propTypes = {
         reorderQuestionUpError: PropTypes.bool.isRequired,
         reorderQuestionDownError: PropTypes.bool.isRequired,
         reorderAnswerUpError: PropTypes.bool.isRequired,
+        reorderAnswerDownError: PropTypes.bool.isRequired,
         updateQuestionError: PropTypes.bool.isRequired,
         updateAnswerError: PropTypes.bool.isRequired
     }).isRequired,
