@@ -12,7 +12,6 @@ export const createAnswer = (id, body) => {
         try {
             const questions = [...getState().questions.questions];
             const question = questions.find(q => q.id === id);
-            console.log(question);
             const previousAnswers = question.answers;
             const answers = [
                 ...previousAnswers,
