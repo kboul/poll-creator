@@ -13,11 +13,11 @@ export const orderQuestionUp = (questions, id) => {
     const question = questions.find(q => q.id === id);
     // store initial order of item to change
     const initialOrder = question.order;
-    // find previous quetion of the question to be changed
-    const nextQuestion = questions.find(q => q.order === initialOrder - 1);
-    if (nextQuestion) {
+    // find previous question of the question to be changed
+    const previousQuestion = questions.find(q => q.order === initialOrder - 1);
+    if (previousQuestion) {
         // change the order of the previous question
-        nextQuestion.order += 1;
+        previousQuestion.order += 1;
         // change the order of the selected question
         question.order -= 1;
     } else {
