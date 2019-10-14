@@ -17,11 +17,16 @@ export const createAnswer = (id, body) => {
                 ...previousAnswers,
                 { order: previousAnswers.length + 1, body }
             ];
-            question.answers = answers;
 
-            await httpService.post('/api/questionnaire?debug=true', questions);
+            const data = {
+                "answers": [...answers]
+            };
+
+            await httpService.put(`/api/questions/${id}`, data);
             dispatch({
-                type: types.CREATE_ANSWER_SUCCESS
+                type: types.CREATE_ANSWER_SUCCESS,
+                id,
+                answers
             });
         } catch (error) {
             console.log('There was an error while creating the answer', error);

@@ -2,3 +2,4 @@
 /src/store/actions/updateAnswer.js
 /src/store/actions/createQuestion.js
 /src/store/actions/deleteAnswer.js
+/src/store/actions/createAnswer.js

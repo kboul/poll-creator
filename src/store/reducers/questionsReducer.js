@@ -65,22 +65,18 @@ const questionsReducer = (state = initialState, action) => {
                 tenQuestionsReached: action.status
             };
         case types.CREATE_ANSWER_SUCCESS: {
+            const questions = [...state.questions];
+            const question = questions.find(q => q.id === action.id);
+            question.answers = [...action.answers];
             return {
                 ...state,
+                questions,
                 createAnswerError: false
             };
         }
         case types.CREATE_ANSWER_FAIL: {
-            // const questions = [...state.questions];
-            // const question = questions.find(q => q.id === action.id);
-            // const answers = [...question.answers];
-            // // question.answers = [
-            // //     ...answers.slice(0, answers.length - 1),
-            // //     ...answers.slice(answers.length)
-            // // ];
             return {
                 ...state,
-                // questions,
                 createAnswerError: true
             };
         }
