@@ -19,7 +19,7 @@ export const createAnswer = (id, body) => {
             ];
             question.answers = answers;
 
-            await httpService.post('/api/questionnaire', questions);
+            await httpService.post('/api/questionnaire?debug=true', questions);
             dispatch({
                 type: types.CREATE_ANSWER_SUCCESS
             });
