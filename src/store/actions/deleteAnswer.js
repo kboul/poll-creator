@@ -1,5 +1,3 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-return-assign */
 import httpService from '../../services/httpService';
 import { types } from './types';
 
@@ -14,21 +12,31 @@ export const deleteAnswer = (id, order) => {
         try {
             const questions = [...getState().questions.questions];
             const question = questions.find(q => q.id === id);
-            // exlude current answer
+            // exlude naswer to be deleted form collection
             const remainingAnswers = question.answers.filter(
                 a => a.order !== order
             );
 
-            question.answers = remainingAnswers;
+            // reorder remaining answers []
+            const reorderRemainingAnswers = remainingAnswers.map((a, i) => {
+                const answer = { ...a };
+                if (answer.order > order) {
+                    answer.order = i + 1;
+                    return answer;
+                }
+                return answer;
+            });
 
             const data = {
-                answers: remainingAnswers
+                answers: [...reorderRemainingAnswers]
             };
 
             await httpService.put(`/api/questions/${id}`, data);
 
             dispatch({
-                type: types.DELETE_ANSWER_SUCCESS
+                type: types.DELETE_ANSWER_SUCCESS,
+                id,
+                reorderRemainingAnswers
             });
         } catch (error) {
             console.log('There was an error while deleting the answer', error);
