@@ -41,7 +41,7 @@ const questionsReducer = (state = initialState, action) => {
                 getQuestionsError: true
             };
         case types.CREATE_QUESTION_SUCCESS: {
-            const questions = action.newQuestions;
+            const questions = [...action.newQuestions];
             return {
                 ...state,
                 questions,
@@ -165,11 +165,11 @@ const questionsReducer = (state = initialState, action) => {
             question.prompt = action.prompt;
             return {
                 ...state,
-                questions
+                questions,
+                updateQuestionError: false
             };
         }
         case types.UPDATE_QUESTION_FAIL:
-            // todo revert state
             return {
                 ...state,
                 updateQuestionError: true
