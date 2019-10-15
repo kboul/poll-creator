@@ -1,5 +1,5 @@
 import { types } from './types';
-import { idGenerator } from '../../utils/idGenerator';
+import { uuidGenerator } from '../../utils/uuidGenerator';
 import httpService from '../../services/httpService';
 
 /**
@@ -20,7 +20,7 @@ export const createQuestion = () => {
             }
 
             const newQuestion = {
-                "id": idGenerator(),
+                "id": uuidGenerator(),
                 "prompt": "",
                 "order": questions.length,
                 "answers": []
