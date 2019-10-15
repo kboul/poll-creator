@@ -5,6 +5,7 @@ import httpService from '../../services/httpService';
  *
  * @param {string} id
  * @param {string} body
+ * @returns {Redux action}
  */
 
 export const createAnswer = (id, body) => {

@@ -5,7 +5,8 @@ import httpService from '../../services/httpService';
 /**
  *
  * @param {string} id - question id
- * @param {string} order - answer order
+ * @param {number} order - answer order
+ * @returns {Redux action}
  */
 
 export const reorderAnswerDown = (id, order) => {

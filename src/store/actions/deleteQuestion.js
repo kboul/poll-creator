@@ -5,6 +5,7 @@ import { types } from './types';
 /**
  *
  * @param {string} id
+ * @returns {Redux action}
  */
 
 export const deleteQuestion = id => {

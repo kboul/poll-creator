@@ -4,7 +4,8 @@ import { types } from './types';
 /**
  *
  * @param {string} id
- * @param {string} order
+ * @param {number} order
+ * @returns {Redux action}
  */
 
 export const deleteAnswer = (id, order) => {
