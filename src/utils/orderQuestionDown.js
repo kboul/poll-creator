@@ -5,7 +5,7 @@
  *
  * @param {Array<Question>} questions
  * @param {string} id - question to be changed id
- * @returns {<Question>} -reoder questions with the selected ordered up
+ * @returns {<Question>} -reoder questions with the selected ordered down
  */
 
 export const orderQuestionDown = (questions, id) => {
