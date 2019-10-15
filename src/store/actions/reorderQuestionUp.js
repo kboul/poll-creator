@@ -3,6 +3,12 @@ import httpService from '../../services/httpService';
 import { orderQuestionUp } from '../../utils/orderQuestionUp';
 import { orderQuestionDown } from '../../utils/orderQuestionDown';
 
+/**
+ *
+ * @param {string} id
+ * @returns {Redux action}
+ */
+
 export const reorderQuestionUp = id => {
     return async (dispatch, getState) => {
         try {

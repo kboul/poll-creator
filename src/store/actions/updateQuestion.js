@@ -1,6 +1,13 @@
 import httpService from '../../services/httpService';
 import { types } from './types';
 
+/**
+ * 
+ * @param {string} prompt 
+ * @param {string} id 
+ * @returns {Redux action}
+ */
+
 export const updateQuestion = (prompt, id) => {
     return async dispatch => {
         try {

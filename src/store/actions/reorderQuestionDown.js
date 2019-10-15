@@ -1,9 +1,13 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-return-assign */
 import { types } from './types';
 import httpService from '../../services/httpService';
 import { orderQuestionDown } from '../../utils/orderQuestionDown';
 import { orderQuestionUp } from '../../utils/orderQuestionUp';
+
+/**
+ *
+ * @param {string} id
+ * @returns {Redux action}
+ */
 
 export const reorderQuestionDown = id => {
     return async (dispatch, getState) => {

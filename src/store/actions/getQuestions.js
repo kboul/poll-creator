@@ -1,6 +1,10 @@
 import httpService from '../../services/httpService';
 import { types } from './types';
 
+/**
+ * @returns {Redux action}
+ */
+
 export const getQuestions = () => {
     return async dispatch => {
         try {

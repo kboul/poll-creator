@@ -2,6 +2,10 @@ import { types } from './types';
 import { idGenerator } from '../../utils/idGenerator';
 import httpService from '../../services/httpService';
 
+/**
+ *  @returns {Redux action}
+ */
+
 export const createQuestion = () => {
     return async (dispatch, getState) => {
         try {
