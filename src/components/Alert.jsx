@@ -41,13 +41,14 @@ const Alert = ({ type }) => {
         case 'updateAnswer':
             message += 'updating the answer.';
             break;
-        case 'reorderAnswernUp':
+        case 'reorderAnswerUp':
             message += 'reordering the answer up.';
             break;
-        case 'reorderAnswernDown':
+        case 'reorderAnswerDown':
             message += 'reordering the answer down.';
             break;
         default:
+            console.log('Nothing was returned from Alert');
             return;
     }
 
