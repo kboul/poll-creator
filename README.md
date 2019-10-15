@@ -28,9 +28,9 @@ browser listens to [http://localhost:3000](http://localhost:3000) as default por
 
 -   The app allows to create, read, update & delete questions & answers to build a simple questionnaire.
 -   It uses a fake DB to persist the data and relevant corresponding changes (crud operations).
--   Once starting typing into question or answer input a Save button will appear on the right input corner which allows to save the inserted value
--   The button will dissapear after clicking Save
--   The app allows to push reordered question or answer to the bottom of the list if its the first question or answer and user hits ^ icon.
+-   Once starting typing into question or answer input a Save button will appear on the right input corner which allows to save the inserted value.
+-   The button will dissapear after clicking Save.
+-   The app allows to push reordered question or answer to the bottom of the list if its the first question or answer and user hits ⌃ icon.
 -   The app allows to push reordered question or answer to the start of the list if its the first question or answer and user hits ⌄ icon.
 
 ## Current App Status
