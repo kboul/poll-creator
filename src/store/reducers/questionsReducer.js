@@ -207,8 +207,14 @@ const questionsReducer = (state = initialState, action) => {
             };
         }
         case types.DELETE_QUESTION_FAIL:
+            const questions = [...state.questions];
+            questions.forEach((q, index) => {
+                // eslint-disable-next-line no-param-reassign
+                q.order = index;
+            });
             return {
                 ...state,
+                questions,
                 deleteQuestionError: true
             };
         case types.DELETE_QUESTION_REVERT_ALERT:
