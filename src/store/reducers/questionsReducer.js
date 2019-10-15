@@ -109,7 +109,8 @@ const questionsReducer = (state = initialState, action) => {
             const questions = [...action.data];
             return {
                 ...state,
-                questions
+                questions,
+                reorderQuestionDownError: false
             };
         }
         case types.REORDER_QUESTION_DOWN_FAIL: {
