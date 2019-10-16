@@ -19,18 +19,19 @@ export const createQuestion = () => {
                 });
             }
 
+            // prettier-ignore
             const newQuestion = {
                 "id": uuidGenerator(),
                 "prompt": "",
                 "order": questions.length,
                 "answers": []
             }
-            
-            const data = [...questions, newQuestion]
+
+            const data = [...questions, newQuestion];
 
             await httpService.post('/api/questionnaire', data);
             dispatch({
-                type: types.CREATE_QUESTION_SUCCESS, 
+                type: types.CREATE_QUESTION_SUCCESS,
                 payload: data
             });
         } catch (error) {
