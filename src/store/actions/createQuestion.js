@@ -26,11 +26,12 @@ export const createQuestion = () => {
                 "answers": []
             }
             
-            const newQuestions = [...questions, newQuestion]
+            const payload = [...questions, newQuestion]
 
-            await httpService.post('/api/questionnaire', newQuestions);
+            await httpService.post('/api/questionnaire', payload);
             dispatch({
-                type: types.CREATE_QUESTION_SUCCESS, newQuestions
+                type: types.CREATE_QUESTION_SUCCESS, 
+                payload
             });
         } catch (error) {
             console.log(

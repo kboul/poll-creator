@@ -41,7 +41,7 @@ const questionsReducer = (state = initialState, action) => {
                 getQuestionsError: true
             };
         case types.CREATE_QUESTION_SUCCESS: {
-            const questions = [...action.newQuestions];
+            const questions = [...action.payload];
             return {
                 ...state,
                 questions,
