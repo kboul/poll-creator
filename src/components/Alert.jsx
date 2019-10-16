@@ -15,7 +15,12 @@ const Alert = ({ type }) => {
             alert = 'warning';
             break;
         case alerts.tenQuestionsReached:
-            message = 'You cannot add more than 10 questions.';
+            message = (
+                <div>
+                    <i className="fa fa-stop" />
+                    &nbsp; You cannot add more than 10 questions.
+                </div>
+            );
             alert = 'warning';
             break;
         case alerts.createQuestion:
