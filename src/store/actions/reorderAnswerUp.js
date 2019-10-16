@@ -15,7 +15,7 @@ export const reorderAnswerUp = (id, order) => {
         try {
             const questions = [...getState().questions.questions];
             const answers = orderAnswerUp(questions, id, order);
-
+            // prettier-ignore
             const data = {
                 "answers": [...answers]
             };

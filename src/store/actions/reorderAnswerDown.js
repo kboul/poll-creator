@@ -14,7 +14,7 @@ export const reorderAnswerDown = (id, order) => {
         try {
             const questions = [...getState().questions.questions];
             const answers = orderAnswerDown(questions, id, order);
-
+            // prettier-ignore
             const data = {
                 "answers": [...answers]
             }
