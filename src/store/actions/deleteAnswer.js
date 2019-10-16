@@ -28,16 +28,16 @@ export const deleteAnswer = (id, order) => {
                 return answer;
             });
 
+            // prettier-ignore
             const data = {
                 "answers": [...reorderRemainingAnswers]
             };
 
             await httpService.put(`/api/questions/${id}`, data);
-
-            question.answers = [...reorderRemainingAnswers];
-
             dispatch({
-                type: types.DELETE_ANSWER_SUCCESS
+                type: types.DELETE_ANSWER_SUCCESS,
+                id,
+                payload: reorderRemainingAnswers
             });
         } catch (error) {
             console.log('There was an error while deleting the answer', error);

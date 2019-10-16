@@ -230,8 +230,12 @@ const questionsReducer = (state = initialState, action) => {
             };
 
         case types.DELETE_ANSWER_SUCCESS: {
+            const questions = [...state.questions];
+            const question = questions.find(q => q.id === action.id);
+            question.answers = [...action.payload];
             return {
                 ...state,
+                questions,
                 deleteAnswerError: false
             };
         }
