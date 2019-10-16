@@ -5,6 +5,7 @@ import Question from './Question';
 import Spinner from './Spinner';
 import { getQuestions } from '../store/actions/getQuestions';
 import { propTypes } from '../propTypes/questions';
+import { alerts } from '../alerts';
 
 class Questions extends Component {
     componentDidMount() {
@@ -34,26 +35,32 @@ class Questions extends Component {
         console.log(questions);
 
         if (getQuestionsError && !questions.length)
-            return <Alert type="fetchQuestions" />;
+            return <Alert type={alerts.getQuestions} />;
 
         const questionnaire = (
             <>
-                {!questions.length && <Alert type="noQuestions" />}
-                {createQuestionError && <Alert type="createQuestion" />}
+                {!questions.length && <Alert type={alerts.noQuestions} />}
+                {createQuestionError && <Alert type={alerts.createQuestion} />}
                 {(tenQuestionsReached || questions.length === 10) && (
-                    <Alert type="tenQuestionsReached" />
+                    <Alert type={alerts.tenQuestionsReached} />
                 )}
-                {createAnswerError && <Alert type="createAnswer" />}
-                {reorderQuestionUpError && <Alert type="reorderQuestionUp" />}
+                {createAnswerError && <Alert type={alerts.createAnswer} />}
+                {reorderQuestionUpError && (
+                    <Alert type={alerts.reorderQuestionUp} />
+                )}
                 {reorderQuestionDownError && (
-                    <Alert type="reorderQuestionDown" />
+                    <Alert type={alerts.reorderQuestionDown} />
                 )}
-                {reorderAnswerUpError && <Alert type="reorderAnswerUp" />}
-                {reorderAnswerDownError && <Alert type="reorderAnswerDown" />}
-                {updateQuestionError && <Alert type="updateQuestion" />}
-                {updateAnswerError && <Alert type="updateAnswer" />}
-                {deleteQuestionError && <Alert type="deleteQuestion" />}
-                {deleteAnswerError && <Alert type="deleteAnswer" />}
+                {reorderAnswerUpError && (
+                    <Alert type={alerts.reorderAnswerUp} />
+                )}
+                {reorderAnswerDownError && (
+                    <Alert type={alerts.reorderAnswerDown} />
+                )}
+                {updateQuestionError && <Alert type={alerts.updateQuestion} />}
+                {updateAnswerError && <Alert type={alerts.updateAnswer} />}
+                {deleteQuestionError && <Alert type={alerts.deleteQuestion} />}
+                {deleteAnswerError && <Alert type={alerts.deleteAnswer} />}
 
                 {questions.map(({ prompt, id, order, answers }) => (
                     <Question
