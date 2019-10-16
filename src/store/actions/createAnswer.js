@@ -24,14 +24,15 @@ export const createAnswer = (id, body) => {
             };
 
             await httpService.put(`/api/questions/${id}`, data);
+            // update answers
+            question.answers = [...answers];
+
             dispatch({
-                type: types.CREATE_ANSWER_SUCCESS,
-                id,
-                answers
+                type: types.CREATE_ANSWER_SUCCESS
             });
         } catch (error) {
             console.log('There was an error while creating the answer', error);
-            dispatch({ type: types.CREATE_ANSWER_FAIL, id });
+            dispatch({ type: types.CREATE_ANSWER_FAIL });
             setTimeout(
                 () => dispatch({ type: types.CREATE_ANSWER_REVERT_ALERT }),
                 2000
