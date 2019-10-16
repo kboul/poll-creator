@@ -18,7 +18,7 @@ export const reorderQuestionDown = id => {
             await httpService.post('/api/questionnaire', data);
             dispatch({
                 type: types.REORDER_QUESTION_DOWN_SUCCESS,
-                data
+                payload: data
             });
         } catch (error) {
             console.log(
@@ -27,7 +27,7 @@ export const reorderQuestionDown = id => {
             );
             const questions = [...getState().questions.questions];
             const data = orderQuestionUp(questions, id);
-            dispatch({ type: types.REORDER_QUESTION_DOWN_FAIL, data });
+            dispatch({ type: types.REORDER_QUESTION_DOWN_FAIL, payload: data });
             setTimeout(
                 () =>
                     dispatch({

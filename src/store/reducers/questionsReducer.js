@@ -85,7 +85,7 @@ const questionsReducer = (state = initialState, action) => {
                 tenQuestionsReached: action.status
             };
         case types.REORDER_QUESTION_UP_SUCCESS: {
-            const questions = [...action.data];
+            const questions = [...action.payload];
             return {
                 ...state,
                 questions,
@@ -93,7 +93,7 @@ const questionsReducer = (state = initialState, action) => {
             };
         }
         case types.REORDER_QUESTION_UP_FAIL: {
-            const questions = [...action.data];
+            const questions = [...action.payload];
             return {
                 ...state,
                 questions,
@@ -106,7 +106,7 @@ const questionsReducer = (state = initialState, action) => {
                 reorderQuestionUpError: false
             };
         case types.REORDER_QUESTION_DOWN_SUCCESS: {
-            const questions = [...action.data];
+            const questions = [...action.payload];
             return {
                 ...state,
                 questions,
@@ -114,7 +114,7 @@ const questionsReducer = (state = initialState, action) => {
             };
         }
         case types.REORDER_QUESTION_DOWN_FAIL: {
-            const questions = [...action.data];
+            const questions = [...action.payload];
             return {
                 ...state,
                 questions,
