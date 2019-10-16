@@ -19,16 +19,16 @@ export const createAnswer = (id, body) => {
                 { order: previousAnswers.length + 1, body }
             ];
 
+            // prettier-ignore
             const data = {
                 "answers": [...answers]
             };
 
             await httpService.put(`/api/questions/${id}`, data);
-            // update answers
-            question.answers = [...answers];
-
             dispatch({
-                type: types.CREATE_ANSWER_SUCCESS
+                type: types.CREATE_ANSWER_SUCCESS,
+                id,
+                payload: answers
             });
         } catch (error) {
             console.log('There was an error while creating the answer', error);

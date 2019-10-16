@@ -59,8 +59,12 @@ const questionsReducer = (state = initialState, action) => {
                 createQuestionError: false
             };
         case types.CREATE_ANSWER_SUCCESS: {
+            const questions = [...state.questions];
+            const question = questions.find(q => q.id === action.id);
+            question.answers = [...action.payload];
             return {
                 ...state,
+                questions,
                 createAnswerError: false
             };
         }
