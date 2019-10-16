@@ -22,20 +22,20 @@ export const deleteQuestion = id => {
 
             const question = questions.find(q => q.id === id);
             const index = questions.indexOf(question);
-            const payload = questions.filter(q => q.id !== id);
+            const data = questions.filter(q => q.id !== id);
             // reorder remaining questions
-            payload.forEach(q => {
+            data.forEach(q => {
                 if (q.order > index) q.order -= 1;
                 // take into account when deleting one item in a 2items array
-                else if (q.order === -1 && payload.length > 0) {
+                else if (q.order === -1 && data.length > 0) {
                     q.order = 0;
                 }
             });
 
-            await httpService.post('/api/questionnaire', payload);
+            await httpService.post('/api/questionnaire', data);
             dispatch({
                 type: types.DELETE_QUESTION_SUCCESS,
-                payload
+                payload: data
             });
         } catch (error) {
             console.log(
