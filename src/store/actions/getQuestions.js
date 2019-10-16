@@ -9,10 +9,12 @@ export const getQuestions = () => {
     return async dispatch => {
         try {
             dispatch({ type: types.GET_QUESTIONS_LOADING });
-            const response = await httpService.get('/api/questions');
+            const {
+                data: { data: payload }
+            } = await httpService.get('/api/questions');
             dispatch({
                 type: types.GET_QUESTIONS_SUCCESS,
-                questions: response.data.data
+                payload
             });
         } catch (error) {
             console.log(

@@ -20,7 +20,7 @@ const initialState = {
 const questionsReducer = (state = initialState, action) => {
     switch (action.type) {
         case types.GET_QUESTIONS_SUCCESS: {
-            const questions = [...action.questions];
+            const questions = [...action.payload];
             return {
                 ...state,
                 questions,
