@@ -123,8 +123,12 @@ const questionsReducer = (state = initialState, action) => {
                 reorderQuestionDownError: false
             };
         case types.REORDER_ANSWER_UP_SUCCESS: {
+            const questions = [...state.questions];
+            const question = questions.find(q => q.id === action.id);
+            question.answers = [...action.payload];
             return {
                 ...state,
+                questions,
                 reorderAnswerUpError: false
             };
         }
