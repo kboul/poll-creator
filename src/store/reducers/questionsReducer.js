@@ -200,7 +200,7 @@ const questionsReducer = (state = initialState, action) => {
                 updateAnswerError: false
             };
         case types.DELETE_QUESTION_SUCCESS: {
-            const questions = [...action.questions];
+            const questions = [...action.payload];
             return {
                 ...state,
                 questions,
