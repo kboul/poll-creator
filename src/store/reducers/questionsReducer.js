@@ -181,15 +181,12 @@ const questionsReducer = (state = initialState, action) => {
                 updateQuestionError: false
             };
         case types.UPDATE_ANSWER_SUCCESS: {
-            const questions = [...action.questions];
             return {
                 ...state,
-                questions,
                 updateAnswerError: false
             };
         }
         case types.UPDATE_ANSWER_FAIL:
-            // todo revert state
             return {
                 ...state,
                 updateAnswerError: true
