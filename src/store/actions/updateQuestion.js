@@ -2,15 +2,16 @@ import httpService from '../../services/httpService';
 import { types } from './types';
 
 /**
- * 
- * @param {string} prompt 
- * @param {string} id 
+ *
+ * @param {string} prompt
+ * @param {string} id
  * @returns {Redux action}
  */
 
 export const updateQuestion = (prompt, id) => {
     return async dispatch => {
         try {
+            // prettier-ignore
             const data = {
                 "prompt": prompt
             };
@@ -28,8 +29,7 @@ export const updateQuestion = (prompt, id) => {
             );
             dispatch({ type: types.UPDATE_QUESTION_FAIL });
             setTimeout(
-                () =>
-                    dispatch({ type: types.UPDATE_QUESTION_REVERT_ALERT }),
+                () => dispatch({ type: types.UPDATE_QUESTION_REVERT_ALERT }),
                 2000
             );
         }

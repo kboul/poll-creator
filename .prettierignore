@@ -1,4 +1,3 @@
-/src/store/actions/updateQuestion.js
 /src/store/actions/updateAnswer.js
 /src/store/actions/reorderAnswerDown.js
 /src/store/actions/reorderAnswerUp.js
