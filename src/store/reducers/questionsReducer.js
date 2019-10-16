@@ -144,8 +144,12 @@ const questionsReducer = (state = initialState, action) => {
                 reorderAnswerUpError: false
             };
         case types.REORDER_ANSWER_DOWN_SUCCESS: {
+            const questions = [...state.questions];
+            const question = questions.find(q => q.id === action.id);
+            question.answers = [...action.payload];
             return {
                 ...state,
+                questions,
                 reorderAnswerDownError: false
             };
         }

@@ -4,3 +4,4 @@
 /src/store/actions/deleteAnswer.js
 /src/store/actions/createAnswer.js
 /src/store/actions/reorderAnswerDown.js
+/src/store/actions/reorderAnswerUp.js
