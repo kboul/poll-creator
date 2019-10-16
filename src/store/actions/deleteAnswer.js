@@ -34,10 +34,10 @@ export const deleteAnswer = (id, order) => {
 
             await httpService.put(`/api/questions/${id}`, data);
 
+            question.answers = [...reorderRemainingAnswers];
+
             dispatch({
-                type: types.DELETE_ANSWER_SUCCESS,
-                id,
-                reorderRemainingAnswers
+                type: types.DELETE_ANSWER_SUCCESS
             });
         } catch (error) {
             console.log('There was an error while deleting the answer', error);
