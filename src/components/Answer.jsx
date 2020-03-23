@@ -78,7 +78,4 @@ const mapDispatchToProps = {
     reorderAnswerDown
 };
 
-export default connect(
-    null,
-    mapDispatchToProps
-)(Answer);
+export default connect(null, mapDispatchToProps)(Answer);

@@ -105,7 +105,4 @@ const mapDispatchToProps = {
     deleteQuestion
 };
 
-export default connect(
-    null,
-    mapDispatchToProps
-)(Question);
+export default connect(null, mapDispatchToProps)(Question);

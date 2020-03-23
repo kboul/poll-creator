@@ -88,7 +88,4 @@ const mapDispatchToProps = {
 
 Questions.propTypes = propTypes;
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Questions);
+export default connect(mapStateToProps, mapDispatchToProps)(Questions);
