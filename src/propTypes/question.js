@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-export const propTypes = {
+const propTypes = {
     answers: PropTypes.arrayOf(
         PropTypes.shape({
             order: PropTypes.number,
@@ -16,3 +16,5 @@ export const propTypes = {
     createAnswer: PropTypes.func.isRequired,
     deleteQuestion: PropTypes.func.isRequired
 };
+
+export default propTypes;

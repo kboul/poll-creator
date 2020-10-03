@@ -1,11 +1,11 @@
 import httpService from '../../services/httpService';
-import { types } from './types';
+import types from './types';
 
 /**
  * @returns {Redux action}
  */
 
-export const getQuestions = () => {
+const getQuestions = () => {
     return async dispatch => {
         try {
             dispatch({ type: types.GET_QUESTIONS_LOADING });
@@ -25,3 +25,5 @@ export const getQuestions = () => {
         }
     };
 };
+
+export default getQuestions;

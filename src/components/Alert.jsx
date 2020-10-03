@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { alerts } from '../alerts';
+
+import alerts from '../alerts';
 
 const Alert = ({ type }) => {
     let message = 'There was an error while ';

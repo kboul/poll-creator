@@ -8,7 +8,7 @@
  * @returns {<Question>} -reoder questions with the selected ordered up
  */
 
-export const orderQuestionUp = (questions, id) => {
+const orderQuestionUp = (questions, id) => {
     // find question to be changed
     const question = questions.find(q => q.id === id);
     // store initial order of item to change
@@ -28,3 +28,5 @@ export const orderQuestionUp = (questions, id) => {
     questions.sort((a, b) => a.order - b.order);
     return questions;
 };
+
+export default orderQuestionUp;

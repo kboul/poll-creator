@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-export const questionsModel = {
+const questionsModel = {
     questions: PropTypes.arrayOf(
         PropTypes.shape({
             answers: PropTypes.arrayOf(
@@ -15,3 +15,5 @@ export const questionsModel = {
         })
     ).isRequired
 };
+
+export default questionsModel;

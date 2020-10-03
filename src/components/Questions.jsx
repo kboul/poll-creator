@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import Alert from './Alert';
 import Question from './Question';
 import Spinner from './Spinner';
-import { getQuestions } from '../store/actions/getQuestions';
-import { propTypes } from '../propTypes/questions';
-import { alerts } from '../alerts';
+import getQuestions from '../store/actions/getQuestions';
+import propTypes from '../propTypes/questions';
+import alerts from '../alerts';
 
 class Questions extends Component {
     componentDidMount() {
@@ -32,7 +33,6 @@ class Questions extends Component {
                 updateAnswerError
             }
         } = this.props;
-        console.log(questions);
 
         if (getQuestionsError && !questions.length)
             return <Alert type={alerts.getQuestions} />;

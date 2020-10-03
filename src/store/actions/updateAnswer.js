@@ -1,5 +1,5 @@
 import httpService from '../../services/httpService';
-import { types } from './types';
+import types from './types';
 
 /**
  *
@@ -9,7 +9,7 @@ import { types } from './types';
  * @returns {Redux action}
  */
 
-export const updateAnswer = (body, id, order) => {
+const updateAnswer = (body, id, order) => {
     return async (dispatch, getState) => {
         try {
             const questions = [...getState().questions.questions];
@@ -35,3 +35,5 @@ export const updateAnswer = (body, id, order) => {
         }
     };
 };
+
+export default updateAnswer;

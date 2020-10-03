@@ -1,6 +1,6 @@
-import { types } from './types';
+import types from './types';
 import httpService from '../../services/httpService';
-import { orderAnswerDown } from '../../utils/orderAnswerDown';
+import orderAnswerDown from '../../utils/orderAnswerDown';
 
 /**
  *
@@ -9,7 +9,7 @@ import { orderAnswerDown } from '../../utils/orderAnswerDown';
  * @returns {Redux action}
  */
 
-export const reorderAnswerDown = (id, order) => {
+const reorderAnswerDown = (id, order) => {
     return async (dispatch, getState) => {
         try {
             const questions = [...getState().questions.questions];
@@ -40,3 +40,5 @@ export const reorderAnswerDown = (id, order) => {
         }
     };
 };
+
+export default reorderAnswerDown;

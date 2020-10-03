@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
-import { types } from './types';
+import types from './types';
 import httpService from '../../services/httpService';
-import { orderAnswerUp } from '../../utils/orderAnswerUp';
+import orderAnswerUp from '../../utils/orderAnswerUp';
 
 /**
  *
@@ -10,7 +10,7 @@ import { orderAnswerUp } from '../../utils/orderAnswerUp';
  * @returns {Redux action}
  */
 
-export const reorderAnswerUp = (id, order) => {
+const reorderAnswerUp = (id, order) => {
     return async (dispatch, getState) => {
         try {
             const questions = [...getState().questions.questions];
@@ -40,3 +40,5 @@ export const reorderAnswerUp = (id, order) => {
         }
     };
 };
+
+export default reorderAnswerUp;

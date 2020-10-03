@@ -1,4 +1,4 @@
-import { types } from './types';
+import types from './types';
 import httpService from '../../services/httpService';
 
 /**
@@ -8,7 +8,7 @@ import httpService from '../../services/httpService';
  * @returns {Redux action}
  */
 
-export const createAnswer = (id, body) => {
+const createAnswer = (id, body) => {
     return async (dispatch, getState) => {
         try {
             const questions = [...getState().questions.questions];
@@ -40,3 +40,5 @@ export const createAnswer = (id, body) => {
         }
     };
 };
+
+export default createAnswer;
