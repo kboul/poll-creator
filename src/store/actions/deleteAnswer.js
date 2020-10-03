@@ -1,5 +1,5 @@
 import httpService from '../../services/httpService';
-import { types } from './types';
+import types from './types';
 
 /**
  *
@@ -8,7 +8,7 @@ import { types } from './types';
  * @returns {Redux action}
  */
 
-export const deleteAnswer = (id, order) => {
+const deleteAnswer = (id, order) => {
     return async (dispatch, getState) => {
         try {
             const questions = [...getState().questions.questions];
@@ -49,3 +49,5 @@ export const deleteAnswer = (id, order) => {
         }
     };
 };
+
+export default deleteAnswer;

@@ -1,4 +1,4 @@
-export const alerts = {
+const alerts = {
     getQuestions: 'getQuestions',
     createQuestion: 'createQuestion',
     tenQuestionsReached: 'tenQuestionsReached',
@@ -13,3 +13,5 @@ export const alerts = {
     reorderAnswerUp: 'reorderAnswerUp',
     reorderAnswerDown: 'reorderAnswerDown'
 };
+
+export default alerts;

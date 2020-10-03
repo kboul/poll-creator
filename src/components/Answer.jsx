@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+
 import Icons from './Icons';
 import SaveButton from './SaveButton';
-import { updateAnswer } from '../store/actions/updateAnswer';
-import { deleteAnswer } from '../store/actions/deleteAnswer';
-import { reorderAnswerUp } from '../store/actions/reorderAnswerUp';
-import { reorderAnswerDown } from '../store/actions/reorderAnswerDown';
+import updateAnswer from '../store/actions/updateAnswer';
+import deleteAnswer from '../store/actions/deleteAnswer';
+import reorderAnswerUp from '../store/actions/reorderAnswerUp';
+import reorderAnswerDown from '../store/actions/reorderAnswerDown';
 import styles from '../sass/Answer.module.sass';
 
 const Answer = ({

@@ -1,12 +1,12 @@
-import { types } from './types';
-import { uuidGenerator } from '../../utils/uuidGenerator';
+import types from './types';
+import uuidGenerator from '../../utils/uuidGenerator';
 import httpService from '../../services/httpService';
 
 /**
  *  @returns {Redux action}
  */
 
-export const createQuestion = () => {
+const createQuestion = () => {
     return async (dispatch, getState) => {
         try {
             const questions = [...getState().questions.questions];
@@ -51,3 +51,5 @@ export const createQuestion = () => {
         }
     };
 };
+
+export default createQuestion;

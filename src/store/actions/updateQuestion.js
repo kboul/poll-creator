@@ -1,5 +1,5 @@
 import httpService from '../../services/httpService';
-import { types } from './types';
+import types from './types';
 
 /**
  *
@@ -8,7 +8,7 @@ import { types } from './types';
  * @returns {Redux action}
  */
 
-export const updateQuestion = (prompt, id) => {
+const updateQuestion = (prompt, id) => {
     return async dispatch => {
         try {
             // prettier-ignore
@@ -35,3 +35,5 @@ export const updateQuestion = (prompt, id) => {
         }
     };
 };
+
+export default updateQuestion;

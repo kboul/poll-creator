@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { createQuestion } from '../store/actions/createQuestion';
-import { questionsModel } from '../propTypes/questionsModel';
+
+import createQuestion from '../store/actions/createQuestion';
+import questionsModel from '../propTypes/questionsModel';
 
 const borderRadius = { borderRadius: '20px' };
 
@@ -25,9 +26,7 @@ const mapStateToProps = state => ({
     questions: state.questions.questions
 });
 
-const mapDispatchToProps = {
-    createQuestion
-};
+const mapDispatchToProps = { createQuestion };
 
 AddNewQuestionButton.propTypes = {
     ...questionsModel,

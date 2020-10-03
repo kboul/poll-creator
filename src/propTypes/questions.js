@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-import { questionsModel } from './questionsModel';
+import questionsModel from './questionsModel';
 
-export const propTypes = {
+const propTypes = {
     questions: PropTypes.shape({
         ...questionsModel,
         loading: PropTypes.bool.isRequired,
@@ -20,3 +20,5 @@ export const propTypes = {
     }).isRequired,
     getQuestions: PropTypes.func.isRequired
 };
+
+export default propTypes;

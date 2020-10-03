@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import styles from '../sass/Icons.module.sass';
 
 const Icons = ({ onAngleUpClick, onAngleDownClick, onTrashClick }) => {

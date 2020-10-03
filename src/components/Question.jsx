@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+
 import Answer from './Answer';
 import Icons from './Icons';
 import SaveButton from './SaveButton';
-import { updateQuestion } from '../store/actions/updateQuestion';
-import { reorderQuestionUp } from '../store/actions/reorderQuestionUp';
-import { reorderQuestionDown } from '../store/actions/reorderQuestionDown';
-import { createAnswer } from '../store/actions/createAnswer';
-import { deleteQuestion } from '../store/actions/deleteQuestion';
-import { propTypes } from '../propTypes/question';
-import { uuidGenerator } from '../utils/uuidGenerator';
+import updateQuestion from '../store/actions/updateQuestion';
+import reorderQuestionUp from '../store/actions/reorderQuestionUp';
+import reorderQuestionDown from '../store/actions/reorderQuestionDown';
+import createAnswer from '../store/actions/createAnswer';
+import deleteQuestion from '../store/actions/deleteQuestion';
+import uuidGenerator from '../utils/uuidGenerator';
+import propTypes from '../propTypes/question';
 import styles from '../sass/Question.module.sass';
 
 const Question = ({

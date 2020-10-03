@@ -8,7 +8,7 @@
  * @returns {<Answer>} -reoder answers with the selected ordered down
  */
 
-export const orderAnswerDown = (questions, id, order) => {
+const orderAnswerDown = (questions, id, order) => {
     const question = questions.find(q => q.id === id);
     // find the answer to be changed
     const answer = question.answers.find(a => a.order === order);
@@ -44,3 +44,5 @@ export const orderAnswerDown = (questions, id, order) => {
     question.answers.sort((a, b) => a.order - b.order);
     return question.answers;
 };
+
+export default orderAnswerDown;
