@@ -7,13 +7,9 @@ import 'font-awesome/css/font-awesome.min.css';
 
 import App from './components/App';
 
-import * as serviceWorker from './serviceWorker';
-
 ReactDOM.render(
     <Provider store={store}>
         <App />
     </Provider>,
     document.getElementById('root')
 );
-
-serviceWorker.unregister();

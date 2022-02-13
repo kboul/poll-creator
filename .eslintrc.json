@@ -32,14 +32,5 @@
         "arrow-body-style": "off",
         "react/react-in-jsx-scope": "off",
         "no-restricted-exports": "off"
-    },
-    "overrides": [
-        {
-            "files": ["serviceWorker.js"],
-            "rules": {
-                "no-use-before-define": "off",
-                "no-param-reassign": "off"
-            }
-        }
-    ]
+    }
 }
