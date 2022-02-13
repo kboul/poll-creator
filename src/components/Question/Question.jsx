@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { connect } from 'react-redux';
 
-import Answer from './Answer';
-import Icons from './Icons';
-import SaveButton from './SaveButton';
-import updateQuestion from '../store/actions/updateQuestion';
-import reorderQuestionUp from '../store/actions/reorderQuestionUp';
-import reorderQuestionDown from '../store/actions/reorderQuestionDown';
-import createAnswer from '../store/actions/createAnswer';
-import deleteQuestion from '../store/actions/deleteQuestion';
-import uuidGenerator from '../utils/uuidGenerator';
-import propTypes from '../propTypes/question';
-import styles from '../sass/Question.module.sass';
+import { AnswerInput, QuestionText } from './styles';
+import Answer from '../Answer';
+import Icons from '../Icons';
+import SaveButton from '../SaveButton';
+import updateQuestion from '../../store/actions/updateQuestion';
+import reorderQuestionUp from '../../store/actions/reorderQuestionUp';
+import reorderQuestionDown from '../../store/actions/reorderQuestionDown';
+import createAnswer from '../../store/actions/createAnswer';
+import deleteQuestion from '../../store/actions/deleteQuestion';
+import uuidGenerator from '../../utils/uuidGenerator';
+import propTypes from '../../propTypes/question';
 
-const Question = ({
+function Question({
     prompt,
     id,
     order,
@@ -23,7 +23,7 @@ const Question = ({
     reorderQuestionDown,
     createAnswer,
     deleteQuestion
-}) => {
+}) {
     const [value, setValue] = useState(prompt);
     const [toggleSave, setToggleSave] = useState(false);
 
@@ -37,6 +37,16 @@ const Question = ({
         }
     };
 
+    const handleInputChange = e => {
+        setValue(e.target.value);
+        setToggleSave(true);
+    };
+
+    const handleSaveBtnClick = () => {
+        updateQuestion(value, id);
+        setToggleSave(false);
+    };
+
     return (
         <div className="card my-4" key={id}>
             <div className="card-body">
@@ -44,27 +54,18 @@ const Question = ({
                     <div className="col-xl-10 col-lg-10 col-md-9 col-sm-10">
                         <div className="input-group">
                             <div className="input-group-prepend">
-                                <span
-                                    className={`input-group-text ${styles.order}`}>
+                                <QuestionText className="input-group-text">
                                     {`Q${order + 1}`}
-                                </span>
+                                </QuestionText>
                             </div>
                             <input
                                 type="text"
                                 className="form-control"
                                 value={value}
-                                onChange={e => {
-                                    setValue(e.target.value);
-                                    setToggleSave(true);
-                                }}
+                                onChange={handleInputChange}
                             />
                             {toggleSave && (
-                                <SaveButton
-                                    onClick={() => {
-                                        updateQuestion(value, id);
-                                        setToggleSave(false);
-                                    }}
-                                />
+                                <SaveButton onClick={handleSaveBtnClick} />
                             )}
                         </div>
                     </div>
@@ -85,16 +86,16 @@ const Question = ({
                         <hr />
                     </div>
                 ))}
-                <input
+                <AnswerInput
                     type="text"
                     placeholder="this is not an answer yet"
-                    className={`form-control ${styles.input}`}
+                    className="form-control"
                     onKeyDown={e => handleCreateAnswer(id, e)}
                 />
             </div>
         </div>
     );
-};
+}
 
 Question.propTypes = propTypes;
 
