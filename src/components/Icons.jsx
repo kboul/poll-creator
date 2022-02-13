@@ -1,9 +1,12 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 
 import styles from '../sass/Icons.module.sass';
 
-const Icons = ({ onAngleUpClick, onAngleDownClick, onTrashClick }) => {
+export default function Icons({
+    onAngleUpClick,
+    onAngleDownClick,
+    onTrashClick
+}) {
     return (
         <div className="float-right">
             <i
@@ -32,12 +35,10 @@ const Icons = ({ onAngleUpClick, onAngleDownClick, onTrashClick }) => {
             />
         </div>
     );
-};
+}
 
 Icons.propTypes = {
     onAngleUpClick: PropTypes.func.isRequired,
     onAngleDownClick: PropTypes.func.isRequired,
     onTrashClick: PropTypes.func.isRequired
 };
-
-export default Icons;
