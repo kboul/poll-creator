@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { connect } from 'react-redux';
 
 import Answer from './Answer';
@@ -13,7 +13,7 @@ import uuidGenerator from '../utils/uuidGenerator';
 import propTypes from '../propTypes/question';
 import styles from '../sass/Question.module.sass';
 
-const Question = ({
+function Question({
     prompt,
     id,
     order,
@@ -23,7 +23,7 @@ const Question = ({
     reorderQuestionDown,
     createAnswer,
     deleteQuestion
-}) => {
+}) {
     const [value, setValue] = useState(prompt);
     const [toggleSave, setToggleSave] = useState(false);
 
@@ -94,7 +94,7 @@ const Question = ({
             </div>
         </div>
     );
-};
+}
 
 Question.propTypes = propTypes;
 

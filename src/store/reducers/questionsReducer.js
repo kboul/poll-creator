@@ -17,7 +17,7 @@ const initialState = {
     deleteAnswerError: false
 };
 
-const questionsReducer = (state = initialState, action) => {
+const questionsReducer = (state = initialState, action = {}) => {
     switch (action.type) {
         case types.GET_QUESTIONS_SUCCESS: {
             const questions = [...action.payload];

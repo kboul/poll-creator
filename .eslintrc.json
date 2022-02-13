@@ -30,7 +30,8 @@
         "consistent-return": "off",
         "no-constant-condition": "off",
         "arrow-body-style": "off",
-        "react/react-in-jsx-scope": "off"
+        "react/react-in-jsx-scope": "off",
+        "no-restricted-exports": "off"
     },
     "overrides": [
         {
