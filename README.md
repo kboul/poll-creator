@@ -1,6 +1,6 @@
-# Create Questionnaire
+# Poll Creator
 
-An app to help a researcher create a questionnaire using React.
+A react app to create a poll.
 
 ## Run the back-end
 
@@ -17,7 +17,7 @@ select master branch
 Navigate to the root folder:
 
 ```
-npm install && npm start
+yarn install && yarn start
 ```
 
 browser listens to [http://localhost:3000](http://localhost:3000) as default port

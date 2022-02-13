@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -7,7 +6,7 @@ import questionsModel from '../propTypes/questionsModel';
 
 const borderRadius = { borderRadius: '20px' };
 
-const AddNewQuestionButton = ({ questions, createQuestion }) => {
+function AddNewQuestionButton({ questions, createQuestion }) {
     return (
         <div className="offset-md-5 mb-4">
             <button
@@ -20,7 +19,7 @@ const AddNewQuestionButton = ({ questions, createQuestion }) => {
             </button>
         </div>
     );
-};
+}
 
 const mapStateToProps = state => ({
     questions: state.questions.questions

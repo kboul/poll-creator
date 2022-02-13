@@ -1,43 +1,44 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from '../sass/Icons.module.sass';
+import { DownIcon, TrashIcon, UpIcon } from './styles';
 
-const Icons = ({ onAngleUpClick, onAngleDownClick, onTrashClick }) => {
+export default function Icons({
+    onAngleUpClick,
+    onAngleDownClick,
+    onTrashClick
+}) {
     return (
         <div className="float-right">
-            <i
-                className={`fa fa-angle-up ${styles.faUp} ${styles.fa}`}
+            <UpIcon
+                aria-label="onAngleUpClick"
+                className="fa fa-angle-up"
                 onClick={onAngleUpClick}
                 onKeyPress={() => {}}
                 role="button"
                 tabIndex="0"
-                aria-label="onAngleUpClick"
             />
-            <i
-                className={`fa fa-angle-down ${styles.faDown} ${styles.fa}`}
+            <DownIcon
+                aria-label="onAngleDownClick"
+                className="fa fa-angle-down"
                 onClick={onAngleDownClick}
                 onKeyPress={() => {}}
                 role="button"
                 tabIndex="0"
-                aria-label="onAngleDownClick"
             />
-            <i
-                className={`fa fa-trash ${styles.fa}`}
+            <TrashIcon
+                aria-label="onTrashClick"
+                className="fa fa-trash"
                 onClick={onTrashClick}
                 onKeyPress={() => {}}
                 role="button"
                 tabIndex="0"
-                aria-label="onTrashClick"
             />
         </div>
     );
-};
+}
 
 Icons.propTypes = {
     onAngleUpClick: PropTypes.func.isRequired,
     onAngleDownClick: PropTypes.func.isRequired,
     onTrashClick: PropTypes.func.isRequired
 };
-
-export default Icons;

@@ -1,9 +1,8 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 
 import alerts from '../alerts';
 
-const Alert = ({ type }) => {
+export default function Alert({ type }) {
     let message = 'There was an error while ';
     let alert = 'danger';
 
@@ -60,10 +59,8 @@ const Alert = ({ type }) => {
     }
 
     return <div className={`alert alert-${alert} mt-2`}>{message}</div>;
-};
+}
 
 Alert.propTypes = {
     type: PropTypes.string.isRequired
 };
-
-export default Alert;

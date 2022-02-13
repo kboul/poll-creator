@@ -29,15 +29,8 @@
         "react/jsx-one-expression-per-line": "off",
         "consistent-return": "off",
         "no-constant-condition": "off",
-        "arrow-body-style": "off"
-    },
-    "overrides": [
-        {
-            "files": ["serviceWorker.js"],
-            "rules": {
-                "no-use-before-define": "off",
-                "no-param-reassign": "off"
-            }
-        }
-    ]
+        "arrow-body-style": "off",
+        "react/react-in-jsx-scope": "off",
+        "no-restricted-exports": "off"
+    }
 }
