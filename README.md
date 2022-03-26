@@ -5,7 +5,7 @@ A react app to create a poll.
 ## Run the back-end
 
 ```
-cd mock-api && npm install && npm start
+cd mock-api && yarn install && yarn start
 ```
 
 ## Run the front-end
