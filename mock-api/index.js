@@ -2,8 +2,8 @@ const dyson = require('dyson');
 const path = require('path');
 
 const options = {
-  configDir: path.join(__dirname, 'mocks'),
-  port: 5000,
+    configDir: path.join(__dirname, 'mocks'),
+    port: 5000
 };
 
 const configs = dyson.getConfigurations(options);

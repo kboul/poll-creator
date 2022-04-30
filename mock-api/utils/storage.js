@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const Ajv = require('ajv');
-const faker = require('faker');
+const faker = require('@faker-js/faker');
 const QuestionnaireSchema = require('./questionnaire.schema.json');
 const QuestionSchema = require('./question.schema.json');
 
